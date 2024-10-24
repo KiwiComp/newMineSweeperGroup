@@ -9,10 +9,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
-    <list id="a3b4fee2-8c58-4e11-a10c-480d3b276514" name="Changes by angie" comment="" />
     <list id="5d81cdfb-da56-4ad9-bc3e-c3463226198b" name="Changes by dlovan" comment="" />
-    <list id="4bc09794-1ba7-4622-91d2-9a47c0f5d39c" name="Changes by kimbe" comment="" />
-    <list id="2d742a6a-af63-407b-aac7-a23b0b763ef3" name="Changes by moust" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,6 +57,7 @@
     "git-widget-placeholder": "group-board",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/dlovan/Desktop/skola/java/newMineSweeperGroup",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
