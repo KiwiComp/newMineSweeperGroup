@@ -79,4 +79,29 @@ public class GameManager {
             }
         }
     }
+
+
+
+    /**
+     * Asks user to place symbol in game board.
+     */
+    private void promptPlayerPlaceSquare() {
+        boolean isRunning = true;
+        String answer;
+
+        System.out.println("Enter square you would like to place your symbol:");
+        this.board.printVisibleBoard();
+
+        while (isRunning) {
+            answer = scanner.nextLine();
+            this.checkQuitCommand(answer);
+            if (this.board.isSquareAvailable(answer)) {
+                this.userInput = answer;
+                isRunning = false;
+            } else {
+                System.out.println("Square is not available! Enter another square: ");
+                this.board.printVisibleBoard();
+            }
+        }
+    }
 }
