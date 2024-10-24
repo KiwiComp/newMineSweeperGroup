@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="bd85dbeb-5c28-491d-8cf1-e5506ae3c92d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
+    </list>
+    <list id="a3b4fee2-8c58-4e11-a10c-480d3b276514" name="Changes by angie" comment="" />
+    <list id="5d81cdfb-da56-4ad9-bc3e-c3463226198b" name="Changes by dlovan" comment="" />
+    <list id="4bc09794-1ba7-4622-91d2-9a47c0f5d39c" name="Changes by kimbe" comment="" />
+    <list id="2d742a6a-af63-407b-aac7-a23b0b763ef3" name="Changes by moust" comment="" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
@@ -38,12 +44,16 @@
     &quot;assignee&quot;: &quot;KiwiComp&quot;
   }
 }</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/KiwiComp/newMineSweeperGroup.git&quot;,
+    &quot;accountId&quot;: &quot;d2a0dd50-1953-40fb-aec1-c9f3ba7c32bd&quot;
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/KiwiComp/newMineSweeperGroup.git",
     "accountId": "68f52cc4-9132-49bb-989e-1e7318f10cdb"
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -56,7 +66,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "dlovan-declare-promptGameDifficulty",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/dlovan/Desktop/skola/java/newMineSweeperGroup",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -89,6 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1729770875540</updated>
     </task>
+    <task id="LOCAL-00001" summary="Workspace specs">
+      <option name="closed" value="true" />
+      <created>1729770197725</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1729770197725</updated>
+    </task>
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
@@ -96,6 +114,8 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Workspace specs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Workspace specs" />
     <MESSAGE value="Created board-class with variables, getters/setters and method to fill the board with symbol." />
     <option name="LAST_COMMIT_MESSAGE" value="Created board-class with variables, getters/setters and method to fill the board with symbol." />
   </component>
