@@ -24,10 +24,8 @@ public class Player {
 
     /**
      * Creates a Player instance.
-     * @param name - Player name.
      */
-    public Player(String name) {
-        this.name = name;
+    public Player() {
         this.wins = 0;
         this.gamesPlayed = 0;
     }
@@ -44,16 +42,8 @@ public class Player {
         return wins;
     }
 
-    public void setWins(int wins) {
-        this.wins = wins;
-    }
-
     public int getGamesPlayed() {
         return gamesPlayed;
-    }
-
-    public void setGamesPlayed(int gamesPlayed) {
-        this.gamesPlayed = gamesPlayed;
     }
 
     public String getPlayerSymbol() {
@@ -63,4 +53,14 @@ public class Player {
     public void setPlayerSymbol(String playerSymbol) {
         this.playerSymbol = playerSymbol;
     }
+
+    public void incrementWins() {
+        this.wins++;
+    }
+
+    public void incrementGamesPlayed() {
+        this.gamesPlayed++;
+    }
+
+    
 }
