@@ -34,6 +34,9 @@ public class GameManager {
         }
     }
 
+    /**
+     * Asks users to select game difficulty.
+     */
     private void promptGameDifficulty() {
         boolean isRunning = true;
         int difficulty;
@@ -59,6 +62,7 @@ public class GameManager {
                 }
 
                 this.difficulty = difficulty;
+                isRunning = false;
             }
         }
     }
