@@ -38,7 +38,7 @@ public class Board {
     }
 
 
-    public void fillBoard() {
+    public void createBoard() {
         System.out.println("How many rows do you want for your board?");
         rowCollection = scanner.nextInt();
         scanner.nextLine();
@@ -51,6 +51,57 @@ public class Board {
                 boardCollection[row][column] = '?';
             }
         }
+    }
+
+
+
+
+    public void placeBombs() {
+        System.out.println("\nHow many bombs do you wish to have on your board?");
+        difficultyLevel = scanner.nextInt();
+        bombCollection = new char[rowCollection][columnCollection];
+        for(int row = 0; row <rowCollection; row++) {
+            for(int column = 0; column < columnCollection; column++) {
+                bombCollection[row][column] = '?';
+            }
+        }
+
+        Random random = new Random();
+
+        for(int i = 0; i < difficultyLevel; i++) {
+            int randomRow = random.nextInt(rowCollection);
+            int randomColumn = random.nextInt(columnCollection);
+
+            if(bombCollection[randomRow][randomColumn]=='?') {
+                bombCollection[randomRow][randomColumn]='*';
+            } else {
+                i--;
+            }
+        }
+    }
+
+
+
+
+
+
+    public boolean isWin() {
+        int totalSafeSpots = rowCollection*columnCollection-difficultyLevel;
+        int revealedSafeSpots = 0;
+        for(char[] row : boardCollection) {
+            for(char symbol : row) {
+                if(symbol == 'X') {
+                    revealedSafeSpots++;
+                }
+            }
+        }
+        if(revealedSafeSpots==totalSafeSpots) {
+            System.out.println("You have won!");
+            player.incrementGamesPlayed();
+            player.incrementWins();
+            return true;
+        }
+        return false;
     }
 
 }
