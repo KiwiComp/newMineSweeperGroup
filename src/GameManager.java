@@ -45,8 +45,10 @@ public class GameManager {
             System.exit(0);
         }
     }
+
     /**
      * Asks user to select game difficulty.
+
      */
     private void promptGameDifficulty() {
         boolean isRunning = true;
