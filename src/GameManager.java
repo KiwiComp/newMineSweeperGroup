@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class GameManager {
-
+   private Board board= new Board();
     private Player player;
     private Scanner scanner = new Scanner(System.in);
     private int difficulty;
@@ -103,5 +103,12 @@ public class GameManager {
                 this.board.printVisibleBoard();
             }
         }
+    }
+
+    private void createGame(int difficulty) {
+        board.createBoard();
+        board.placeBombs(difficulty);
+        board.placeBombAdjacentHints(0,0);
+        System.out.println("Game has started!");
     }
 }
