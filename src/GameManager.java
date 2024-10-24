@@ -43,7 +43,10 @@ public class GameManager {
         if (userInput.equalsIgnoreCase(":quit")) {
             System.out.println("Exiting program!");
             System.exit(0);
-     * Asks users to select game difficulty.
+        }
+    }
+    /**
+     * Asks user to select game difficulty.
      */
     private void promptGameDifficulty() {
         boolean isRunning = true;
