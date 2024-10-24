@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd85dbeb-5c28-491d-8cf1-e5506ae3c92d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <list id="a3b4fee2-8c58-4e11-a10c-480d3b276514" name="Changes by angie" comment="" />
     <list id="5d81cdfb-da56-4ad9-bc3e-c3463226198b" name="Changes by dlovan" comment="" />
-    <list id="4bc09794-1ba7-4622-91d2-9a47c0f5d39c" name="Changes by kimbe" comment="">
-      <change beforePath="$PROJECT_DIR$/src/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
-    </list>
+    <list id="4bc09794-1ba7-4622-91d2-9a47c0f5d39c" name="Changes by kimbe" comment="" />
     <list id="2d742a6a-af63-407b-aac7-a23b0b763ef3" name="Changes by moust" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +26,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -34,12 +39,12 @@
     &quot;assignee&quot;: &quot;KiwiComp&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/KiwiComp/newMineSweeperGroup.git",
-    "accountId": "d2a0dd50-1953-40fb-aec1-c9f3ba7c32bd"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/KiwiComp/newMineSweeperGroup.git&quot;,
+    &quot;accountId&quot;: &quot;d2a0dd50-1953-40fb-aec1-c9f3ba7c32bd&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -52,7 +57,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "group-board",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/dlovan/Desktop/skola/java/newMineSweeperGroup",
     "nodejs_package_manager_path": "npm",
