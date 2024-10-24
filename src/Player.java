@@ -24,10 +24,8 @@ public class Player {
 
     /**
      * Creates a Player instance.
-     * @param name - Player name.
      */
-    public Player(String name) {
-        this.name = name;
+    public Player() {
         this.wins = 0;
         this.gamesPlayed = 0;
     }
