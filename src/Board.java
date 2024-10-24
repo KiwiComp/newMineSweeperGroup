@@ -56,15 +56,14 @@ public class Board {
 
 
 
-    public void placeBombs() {
-        System.out.println("\nHow many bombs do you wish to have on your board?");
-        difficultyLevel = scanner.nextInt();
+    public void placeBombs(int bombAmount) {
         bombCollection = new char[rowCollection][columnCollection];
         for(int row = 0; row <rowCollection; row++) {
             for(int column = 0; column < columnCollection; column++) {
                 bombCollection[row][column] = '?';
             }
         }
+        difficultyLevel = bombAmount;
 
         Random random = new Random();
 
