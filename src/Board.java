@@ -106,27 +106,27 @@ public class Board {
     public int placeBombAdjacentHints(int columnSpot, int rowSpot){
         int bombAmount = 0;
         for (int i = -1; i < 1; i++) {
-            if (columnSpot > 0 && rowSpot > 0) {
+            if (columnSpot - 1 >= 0 && rowSpot + i >= 0) {
                 /*
-                if(checkBomb(columnSpot, rowSpot)){
+                if(checkBomb(columnSpot - 1, rowSpot + i)){
                     bombAmount++;
                 }
                  */
             }
         }
         for (int i = -1; i < 1; i++) {
-            if (columnSpot > 0 && rowSpot > 0) {
+            if (rowSpot + i >= 0) {
                 /*
-                if(checkBomb(columnSpot, rowSpot)){
+                if(checkBomb(columnSpot, rowSpot + i)){
                     bombAmount++;
                 }
                  */
             }
         }
         for (int i = -1; i < 1; i++) {
-            if (columnSpot > 0 && rowSpot > 0) {
+            if (columnSpot + 1 >= 0 && rowSpot + i >= 0) {
                 /*
-                if(checkBomb(columnSpot, rowSpot)){
+                if(checkBomb(columnSpot + 1, rowSpot + i)){
                     bombAmount++;
                 }
                  */
