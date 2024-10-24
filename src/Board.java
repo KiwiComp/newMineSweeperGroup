@@ -104,4 +104,36 @@ public class Board {
         return false;
     }
 
+    public int placeBombAdjacentHints(int columnSpot, int rowSpot){
+        int bombAmount = 0;
+        for (int i = -1; i < 1; i++) {
+            if (columnSpot > 0 && rowSpot > 0) {
+                /*
+                if(checkBomb(columnSpot, rowSpot)){
+                    bombAmount++;
+                }
+                 */
+            }
+        }
+        for (int i = -1; i < 1; i++) {
+            if (columnSpot > 0 && rowSpot > 0) {
+                /*
+                if(checkBomb(columnSpot, rowSpot)){
+                    bombAmount++;
+                }
+                 */
+            }
+        }
+        for (int i = -1; i < 1; i++) {
+            if (columnSpot > 0 && rowSpot > 0) {
+                /*
+                if(checkBomb(columnSpot, rowSpot)){
+                    bombAmount++;
+                }
+                 */
+            }
+        }
+        return bombAmount;
+    }
+
 }
