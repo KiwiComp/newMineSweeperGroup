@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="bd85dbeb-5c28-491d-8cf1-e5506ae3c92d" name="Changes" comment="" />
     <list default="true" id="bd85dbeb-5c28-491d-8cf1-e5506ae3c92d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
@@ -66,6 +67,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "dlovan-declare-checkquitcommand",
     "git-widget-placeholder": "dlovan-declare-promptGameDifficulty",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/dlovan/Desktop/skola/java/newMineSweeperGroup",
