@@ -4,6 +4,7 @@ public class GameManager {
 
     private Player player;
     private Scanner scanner = new Scanner(System.in);
+    private int difficulty;
 
     public GameManager() {
 
@@ -29,6 +30,35 @@ public class GameManager {
             } else {
                 player = new Player(playerName);
                 validNameInput = true;
+            }
+        }
+    }
+
+    private void promptGameDifficulty() {
+        boolean isRunning = true;
+        int difficulty;
+
+        System.out.println("Please enter a game difficulty:");
+        System.out.println("1. Easy");
+        System.out.println("2. Normal");
+        System.out.println("3. Hard");
+        System.out.println("4. Insane");
+
+        while(isRunning) {
+            if (scanner.hasNextInt()) {
+                difficulty = scanner.nextInt();
+                scanner.nextLine();
+
+                if (difficulty < 1 || difficulty > 4) {
+                    System.out.println("Enter a valid difficulty level: ");
+                    System.out.println("1. Easy");
+                    System.out.println("2. Normal");
+                    System.out.println("3. Hard");
+                    System.out.println("4. Insane");
+                    continue;
+                }
+
+                this.difficulty = difficulty;
             }
         }
     }
