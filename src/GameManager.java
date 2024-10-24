@@ -27,7 +27,8 @@ public class GameManager {
             if (playerName.isEmpty()) {
                 System.out.println("Enter a valid name!");
             } else {
-                player = new Player(playerName);
+                player = new Player();
+                player.setName(playerName);
                 validNameInput = true;
             }
         }

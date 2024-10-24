@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="bd85dbeb-5c28-491d-8cf1-e5506ae3c92d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
-    <list id="a3b4fee2-8c58-4e11-a10c-480d3b276514" name="Changes by angie" comment="" />
     <list id="5d81cdfb-da56-4ad9-bc3e-c3463226198b" name="Changes by dlovan" comment="" />
-    <list id="4bc09794-1ba7-4622-91d2-9a47c0f5d39c" name="Changes by kimbe" comment="" />
-    <list id="2d742a6a-af63-407b-aac7-a23b0b763ef3" name="Changes by moust" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,12 +38,12 @@
     &quot;assignee&quot;: &quot;KiwiComp&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/KiwiComp/newMineSweeperGroup.git&quot;,
-    &quot;accountId&quot;: &quot;d2a0dd50-1953-40fb-aec1-c9f3ba7c32bd&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/KiwiComp/newMineSweeperGroup.git",
+    "accountId": "68f52cc4-9132-49bb-989e-1e7318f10cdb"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -58,18 +59,16 @@
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/dlovan/Desktop/skola/java/newMineSweeperGroup",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
-      </set>
-    </attachedChunks>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -80,6 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1729670530223</updated>
       <workItem from="1729673079669" duration="175000" />
+      <workItem from="1729760460504" duration="1077000" />
     </task>
     <task id="LOCAL-00001" summary="Created board-class with variables, getters/setters and method to fill the board with symbol.">
       <option name="closed" value="true" />
