@@ -32,4 +32,15 @@ public class GameManager {
             }
         }
     }
+
+    /**
+     * Quits program if user enters stream argument.
+     * @param userInput - User input.
+     */
+    private void checkQuitCommand(String userInput) {
+        if (userInput.equalsIgnoreCase(":quit")) {
+            System.out.println("Exiting program!");
+            System.exit(0);
+        }
+    }
 }

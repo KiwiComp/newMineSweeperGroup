@@ -9,9 +9,7 @@
     </list>
     <list id="a3b4fee2-8c58-4e11-a10c-480d3b276514" name="Changes by angie" comment="" />
     <list id="5d81cdfb-da56-4ad9-bc3e-c3463226198b" name="Changes by dlovan" comment="" />
-    <list id="4bc09794-1ba7-4622-91d2-9a47c0f5d39c" name="Changes by kimbe" comment="">
-      <change beforePath="$PROJECT_DIR$/src/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
-    </list>
+    <list id="4bc09794-1ba7-4622-91d2-9a47c0f5d39c" name="Changes by kimbe" comment="" />
     <list id="2d742a6a-af63-407b-aac7-a23b0b763ef3" name="Changes by moust" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +32,12 @@
     &quot;assignee&quot;: &quot;KiwiComp&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/KiwiComp/newMineSweeperGroup.git",
-    "accountId": "d2a0dd50-1953-40fb-aec1-c9f3ba7c32bd"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/KiwiComp/newMineSweeperGroup.git&quot;,
+    &quot;accountId&quot;: &quot;d2a0dd50-1953-40fb-aec1-c9f3ba7c32bd&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -55,6 +53,7 @@
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/dlovan/Desktop/skola/java/newMineSweeperGroup",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
