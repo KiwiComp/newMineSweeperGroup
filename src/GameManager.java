@@ -105,10 +105,43 @@ public class GameManager {
         }
     }
 
+
     private void createGame(int difficulty) {
         board.createBoard();
         board.placeBombs(difficulty);
         board.placeBombAdjacentHints(0,0);
         System.out.println("Game has started!");
+    /**
+     * Evaluates a round after each player move.
+     * @return - Returns false if this game session is over. True if game proceeds.
+     */
+    private boolean evaluateRound() {
+        // Check if a square is a bomb before placing player symbol.
+        if (this.board.isSquareBomb(this.userInput)) {
+            System.out.println("You triggered a bomb. You lost.");
+            this.board.incrementGamesPlayed();
+            System.out.println("You have played: " + this.board.getGamesPlayed() + " games.");
+            System.out.println("You've won: " + this.getWins() + " times.");
+            System.out.println("Restarting game.");
+            this.resetGame();
+            return false;
+        } else {
+            // Place player symbol in selected square.
+            this.board.placePlayerSymbol(this.userInput);
+        }
+
+        // Check if there is a win condition.
+        if (this.board.isWin()) {
+            System.out.println("You win!");
+            this.board.incrementWins();
+            this.board.incrementGamesPlayed();
+            System.out.println("You have played: " + this.board.getGamesPlayed() + " games.");
+            System.out.println("You've won: " + this.getWins() + " times.");
+            System.out.println("Restarting game.");
+            this.resetGame();
+            return false;
+        } else {
+            return true;
+        }
     }
 }
