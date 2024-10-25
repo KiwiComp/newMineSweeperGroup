@@ -5,6 +5,7 @@ public class GameManager {
     private Player player;
     private Scanner scanner = new Scanner(System.in);
     private int difficulty;
+    private boolean closeApplication = false;
 
     public GameManager() {
 
@@ -13,6 +14,40 @@ public class GameManager {
     public void run() {
         System.out.println("\n\n====================== WELCOME TO MINESWEEPER! ==========================\n\n");
         this.promptCreatePlayer();
+        while(!closeApplication) {
+            this.board.createBoard();
+            board.printVisibleBoard();
+            System.out.println("How many bombs do you want?");
+            board.placeBombs(scanner.nextInt());
+            scanner.nextLine();
+
+            while (!board.getGameEnd() && !board.getWeHaveAWinner()) {
+                board.placePlayerSymbol(player);
+            }
+            this.scoreboard();
+
+            newGameOption();
+        }
+
+    }
+
+    private void newGameOption() {
+        System.out.println("Do you want to play again? (y/n)");
+        boolean validInput = false;
+        String again;
+        while(!validInput) {
+            again = scanner.nextLine();
+            if (again.trim().equalsIgnoreCase("n")) {
+                validInput=true;
+                closeApplication = true;
+            } else if (again.trim().equalsIgnoreCase("y")) {
+                validInput = true;
+                board.setGameEnd(false);
+                board.setWeHaveAWinner(false);
+            } else {
+                System.out.println("You have neither chosen y nor n. Try again.");
+            }
+        }
     }
 
     /**
@@ -28,8 +63,8 @@ public class GameManager {
             if (playerName.isEmpty()) {
                 System.out.println("Enter a valid name!");
             } else {
-                player = new Player();
-                player.setName(playerName);
+                this.player = new Player();
+                this.player.setName(playerName);
                 validNameInput = true;
             }
         }
@@ -96,7 +131,7 @@ public class GameManager {
      * Evaluates a round after each player move.
      * @return - Returns false if this game session is over. True if game proceeds.
      */
-    private boolean evaluateRound() {
+    /*private boolean evaluateRound() {
         // Check if a square is a bomb before placing player symbol.
         if (this.board.isSquareBomb(this.userInput)) {
             System.out.println("You triggered a bomb. You lost.");
@@ -124,5 +159,13 @@ public class GameManager {
         } else {
             return true;
         }
+    }*/
+
+    public void scoreboard() {
+        System.out.println("Number of games played: " + this.player.getGamesPlayed()+"\n"+
+                "Number of games won: " + this.player.getWins()+"\n"+
+                "Number of games lost: " + (this.player.getGamesPlayed()-this.player.getWins()));
+
     }
+
 }
