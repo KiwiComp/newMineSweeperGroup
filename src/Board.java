@@ -168,7 +168,7 @@ public class Board {
     }
 
         // printBoard-metoden
-        public void printVisibleBoard() {
+        public void printBoard() {
             System.out.println("Current Board:");
             for (int row = 0; row < rowCollection; row++) {
                 for (int column = 0; colmun < columnCollection; colmun++) {
