@@ -57,34 +57,33 @@ public class Board {
 
     public void placePlayerSymbol() {
         boolean validInput = false;
-        while(!validInput) {
+        while (!validInput) {
 
             System.out.println("\nChoose a row to place your mark: ");
-            int chosenRow = scanner.nextInt()-1;
+            int chosenRow = scanner.nextInt() - 1;
             scanner.nextLine();
             System.out.println("Choose a column to place your mark: ");
-            int chosenColumn = scanner.nextInt()-1;
+            int chosenColumn = scanner.nextInt() - 1;
             scanner.nextLine();
 
-            if (chosenRow >=0 && chosenRow < bombCollection.length &&
-            chosenColumn >=0 && chosenColumn < bombCollection.length) {
+            if (chosenRow >= 0 && chosenRow < bombCollection.length &&
+                    chosenColumn >= 0 && chosenColumn < bombCollection.length) {
                 if (boardCollection[chosenRow][chosenColumn] == 'X') {
                     System.out.println("This spot is taken, chose another one.");
-                }
-                else if (bombCollection[chosenRow][chosenColumn] == '*') {
+                } else if (bombCollection[chosenRow][chosenColumn] == '*') {
                     System.out.println("BOOM!");
                     //add games played code
                     gameEnd = true;
-                }
-                else if (bombCollection[chosenRow][chosenColumn] == '?') {
-                System.out.println("Safe spot!");
-                boardCollection[chosenRow][chosenColumn] = 'X';
-                printBoard();
-                weHaveAWinner=isWin();
-                validInput = true;
+                } else if (bombCollection[chosenRow][chosenColumn] == '?') {
+                    System.out.println("Safe spot!");
+                    boardCollection[chosenRow][chosenColumn] = 'X';
+                    this.printVisibleBoard();
+                    weHaveAWinner = isWin();
+                    validInput = true;
                 }
             }
         }
+    }
 
 
 
@@ -168,11 +167,11 @@ public class Board {
     }
 
         // printBoard-metoden
-        public void printBoard() {
+        public void printVisibleBoard() {
             System.out.println("Current Board:");
             for (int row = 0; row < rowCollection; row++) {
-                for (int column = 0; colmun < columnCollection; colmun++) {
-                    System.out.println(boardCollection[row][colmun] + " ");
+                for (int column = 0; column < columnCollection; column++) {
+                    System.out.println(boardCollection[row][column] + " ");
                 }
                 System.out.println(); // Ny rad efter varje rad på brädet
             }
