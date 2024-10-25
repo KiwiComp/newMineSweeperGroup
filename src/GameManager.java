@@ -123,7 +123,6 @@ public class GameManager {
     private void createGame(int difficulty) {
         board.createBoard();
         board.placeBombs(difficulty);
-        board.placeBombAdjacentHints(0, 0);
         System.out.println("Game has started!");
     }
 

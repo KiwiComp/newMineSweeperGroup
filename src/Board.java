@@ -14,6 +14,7 @@ public class Board {
     private boolean weHaveAWinner = false;
     private int difficultyLevel;
     private boolean closeApplication = false;
+    private int bombs;
 
 
 
@@ -68,19 +69,21 @@ public class Board {
             int chosenColumn = scanner.nextInt() - 1;
             scanner.nextLine();
 
+
             if (chosenRow >= 0 && chosenRow < bombCollection.length &&
                     chosenColumn >= 0 && chosenColumn < bombCollection.length) {
-                if (boardCollection[chosenRow][chosenColumn] == 'X') {
+                if (boardCollection[chosenRow][chosenColumn] <= (char)bombs) {
                     System.out.println("This spot is taken, chose another one.");
                 } else if (bombCollection[chosenRow][chosenColumn] == '*') {
                     System.out.println("BOOM!");
                     //add games played code
+                    printVisibleBoard();
                     player.incrementGamesPlayed();
                     validInput = true;
                     setGameEnd(true);
                 } else if (bombCollection[chosenRow][chosenColumn] == '?') {
                     System.out.println("Safe spot!");
-                    boardCollection[chosenRow][chosenColumn] = 'X';
+                    boardCollection[chosenRow][chosenColumn] = AdjacentHints(chosenRow, chosenColumn);
                     this.printVisibleBoard();
                     weHaveAWinner = isWin(player);
                     validInput = true;
@@ -98,6 +101,7 @@ public class Board {
                 bombCollection[row][column] = '?';
             }
         }
+        this.bombs = bombAmount;
 //        difficultyLevel = bombAmount;
 
         Random random = new Random();
@@ -108,6 +112,7 @@ public class Board {
 
             if(bombCollection[randomRow][randomColumn]=='?') {
                 bombCollection[randomRow][randomColumn]='*';
+                boardCollection[randomRow][randomColumn] = '*';
             } else {
                 i--;
             }
@@ -124,7 +129,7 @@ public class Board {
         int revealedSafeSpots = 0;
         for(char[] row : boardCollection) {
             for(char symbol : row) {
-                if(symbol == 'X') {
+                if(symbol <= (char)bombs) {
                     revealedSafeSpots++;
                 }
             }
@@ -138,36 +143,30 @@ public class Board {
         return false;
     }
 
-    public int placeBombAdjacentHints(int columnSpot, int rowSpot){
+    public char AdjacentHints(int rowSpot, int columnSpot){
         int bombAmount = 0;
-        for (int i = -1; i < 1; i++) {
-            if (columnSpot - 1 >= 0 && rowSpot + i >= 0) {
-                /*
-                if(checkBomb(columnSpot - 1, rowSpot + i)){
+        for (int i = -1; i < 2; i++) {
+            if (rowSpot - 1 >= 0 && columnSpot + i >= 0 && columnSpot + i < columnCollection) {
+                if(bombCollection[rowSpot - 1][columnSpot + i] == '*'){
                     bombAmount++;
                 }
-                 */
             }
         }
-        for (int i = -1; i < 1; i++) {
-            if (rowSpot + i >= 0) {
-                /*
-                if(checkBomb(columnSpot, rowSpot + i)){
+        for (int i = -1; i < 2; i++) {
+            if (columnSpot + i >= 0 && columnSpot + i < columnCollection) {
+                if(bombCollection[rowSpot][columnSpot + i] =='*'){
                     bombAmount++;
                 }
-                 */
             }
         }
-        for (int i = -1; i < 1; i++) {
-            if (columnSpot + 1 >= 0 && rowSpot + i >= 0) {
-                /*
-                if(checkBomb(columnSpot + 1, rowSpot + i)){
+        for (int i = -1; i < 2; i++) {
+            if (rowSpot + 1 < rowCollection && columnSpot + i >= 0 && columnSpot + i < columnCollection) {
+                if(bombCollection[rowSpot + 1][columnSpot + i] == '*' ){
                     bombAmount++;
                 }
-                 */
             }
         }
-        return bombAmount;
+        return (char) (bombAmount + '0');
     }
 
        /* // printBoard-metoden
