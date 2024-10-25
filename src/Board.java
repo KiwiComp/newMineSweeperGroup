@@ -39,7 +39,7 @@ public class Board {
     }
 
 
-    public void fillBoard() {
+    public void createBoard() {
         System.out.println("How many rows do you want for your board?");
         rowCollection = scanner.nextInt();
         scanner.nextLine();
@@ -53,6 +53,7 @@ public class Board {
             }
         }
     }
+
 
     public void placePlayerSymbol() {
         boolean validInput = false;
@@ -84,6 +85,86 @@ public class Board {
                 }
             }
         }
+
+
+
+    public void placeBombs(int bombAmount) {
+        bombCollection = new char[rowCollection][columnCollection];
+        for(int row = 0; row <rowCollection; row++) {
+            for(int column = 0; column < columnCollection; column++) {
+                bombCollection[row][column] = '?';
+            }
+        }
+        difficultyLevel = bombAmount;
+
+        Random random = new Random();
+
+        for(int i = 0; i < difficultyLevel; i++) {
+            int randomRow = random.nextInt(rowCollection);
+            int randomColumn = random.nextInt(columnCollection);
+
+            if(bombCollection[randomRow][randomColumn]=='?') {
+                bombCollection[randomRow][randomColumn]='*';
+            } else {
+                i--;
+            }
+        }
+    }
+
+
+
+
+
+
+    public boolean isWin() {
+        int totalSafeSpots = rowCollection*columnCollection-difficultyLevel;
+        int revealedSafeSpots = 0;
+        for(char[] row : boardCollection) {
+            for(char symbol : row) {
+                if(symbol == 'X') {
+                    revealedSafeSpots++;
+                }
+            }
+        }
+        if(revealedSafeSpots==totalSafeSpots) {
+            System.out.println("You have won!");
+            player.incrementGamesPlayed();
+            player.incrementWins();
+            return true;
+        }
+        return false;
+    }
+
+    public int placeBombAdjacentHints(int columnSpot, int rowSpot){
+        int bombAmount = 0;
+        for (int i = -1; i < 1; i++) {
+            if (columnSpot - 1 >= 0 && rowSpot + i >= 0) {
+                /*
+                if(checkBomb(columnSpot - 1, rowSpot + i)){
+                    bombAmount++;
+                }
+                 */
+            }
+        }
+        for (int i = -1; i < 1; i++) {
+            if (rowSpot + i >= 0) {
+                /*
+                if(checkBomb(columnSpot, rowSpot + i)){
+                    bombAmount++;
+                }
+                 */
+            }
+        }
+        for (int i = -1; i < 1; i++) {
+            if (columnSpot + 1 >= 0 && rowSpot + i >= 0) {
+                /*
+                if(checkBomb(columnSpot + 1, rowSpot + i)){
+                    bombAmount++;
+                }
+                 */
+            }
+        }
+        return bombAmount;
     }
 
 }

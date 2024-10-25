@@ -1,12 +1,33 @@
+/**
+ * Represents a player.
+ */
 public class Player {
-
+    /**
+     * Player name.
+     */
     private String name;
+
+    /**
+     * Number of wins.
+     */
     private int wins;
+
+    /**
+     * Number of games played.
+     */
     private int gamesPlayed;
+
+    /**
+     * Player square placement symbol.
+     */
     private String playerSymbol = "X";
 
-    public Player(String name) {
-        this.name = name;
+    /**
+     * Creates a Player instance.
+     */
+    public Player() {
+        this.wins = 0;
+        this.gamesPlayed = 0;
     }
 
     public String getName() {
@@ -21,16 +42,8 @@ public class Player {
         return wins;
     }
 
-    public void setWins(int wins) {
-        this.wins = wins;
-    }
-
     public int getGamesPlayed() {
         return gamesPlayed;
-    }
-
-    public void setGamesPlayed(int gamesPlayed) {
-        this.gamesPlayed = gamesPlayed;
     }
 
     public String getPlayerSymbol() {
@@ -40,4 +53,14 @@ public class Player {
     public void setPlayerSymbol(String playerSymbol) {
         this.playerSymbol = playerSymbol;
     }
+
+    public void incrementWins() {
+        this.wins++;
+    }
+
+    public void incrementGamesPlayed() {
+        this.gamesPlayed++;
+    }
+
+    
 }
