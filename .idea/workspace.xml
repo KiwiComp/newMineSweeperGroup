@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bd85dbeb-5c28-491d-8cf1-e5506ae3c92d" name="Changes" comment="" />
     <list default="true" id="bd85dbeb-5c28-491d-8cf1-e5506ae3c92d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
     </list>
@@ -67,6 +69,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Angelica-board-PlacePlayerSymbol",
     "git-widget-placeholder": "dlovan-declare-checkquitcommand",
     "git-widget-placeholder": "dlovan-declare-promptGameDifficulty",
     "kotlin-language-version-configured": "true",
@@ -115,6 +119,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Workspace specs" />
     <option name="LAST_COMMIT_MESSAGE" value="Workspace specs" />

@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -53,6 +54,37 @@ public class Board {
         }
     }
 
+
+    public void placePlayerSymbol() {
+        boolean validInput = false;
+        while(!validInput) {
+
+            System.out.println("\nChoose a row to place your mark: ");
+            int chosenRow = scanner.nextInt()-1;
+            scanner.nextLine();
+            System.out.println("Choose a column to place your mark: ");
+            int chosenColumn = scanner.nextInt()-1;
+            scanner.nextLine();
+
+            if (chosenRow >=0 && chosenRow < bombCollection.length &&
+            chosenColumn >=0 && chosenColumn < bombCollection.length) {
+                if (boardCollection[chosenRow][chosenColumn] == 'X') {
+                    System.out.println("This spot is taken, chose another one.");
+                }
+                else if (bombCollection[chosenRow][chosenColumn] == '*') {
+                    System.out.println("BOOM!");
+                    //add games played code
+                    gameEnd = true;
+                }
+                else if (bombCollection[chosenRow][chosenColumn] == '?') {
+                System.out.println("Safe spot!");
+                boardCollection[chosenRow][chosenColumn] = 'X';
+                printBoard();
+                weHaveAWinner=isWin();
+                validInput = true;
+                }
+            }
+        }
 
 
 
