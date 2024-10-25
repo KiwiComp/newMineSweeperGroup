@@ -167,4 +167,14 @@ public class Board {
         return bombAmount;
     }
 
+        // printBoard-metoden
+        public void printBoard() {
+            System.out.println("Current Board:");
+            for (int row = 0; row < rowCollection; row++) {
+                for (int column = 0; colmun < columnCollection; colmun++) {
+                    System.out.println(boardCollection[row][colmun] + " ");
+                }
+                System.out.println(); // Ny rad efter varje rad på brädet
+            }
+        }
 }
