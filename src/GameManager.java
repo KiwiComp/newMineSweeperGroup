@@ -13,8 +13,17 @@ public class GameManager {
     public void run() {
         System.out.println("\n\n====================== WELCOME TO MINESWEEPER! ==========================\n\n");
         this.promptCreatePlayer();
-        this.promptGameDifficulty();
-        this.createGame(difficulty);
+
+        // Game loop.
+        while(true) {
+            this.promptGameDifficulty();
+            this.createGame(this.difficulty);
+
+            // Game session loop.
+            while (true) {
+
+            }
+        }
     }
 
     /**
