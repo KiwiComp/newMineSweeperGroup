@@ -47,10 +47,6 @@ public class Player {
         return playerSymbol;
     }
 
-    public void setPlayerSymbol(String playerSymbol) {
-        this.playerSymbol = playerSymbol;
-    }
-
     public void incrementWins() {
         this.wins++;
     }

@@ -115,10 +115,10 @@ public class GameManager {
         // Check if there is a win condition.
         if (this.board.isWin()) {
             System.out.println("You win!");
-            this.board.incrementWins();
-            this.board.incrementGamesPlayed();
-            System.out.println("You have played: " + this.board.getGamesPlayed() + " games.");
-            System.out.println("You've won: " + this.getWins() + " times.");
+            this.player.incrementWins();
+            this.player.incrementGamesPlayed();
+            System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
+            System.out.println("You've won: " + this.player.getWins() + " times.");
             System.out.println("Restarting game.");
             return false;
         } else {
