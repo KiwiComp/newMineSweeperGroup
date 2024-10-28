@@ -89,6 +89,48 @@ public class GameManager {
         }
     }
 
+    /**
+     * Asks user how many rows and columns the board should have.
+     * Creates board based on input.
+     */
+    private void promptCreateBoard() {
+        int rows;
+        int columns;
+
+        System.out.println("How many rows do you want for your board?");
+
+        // Loop for rows.
+        while(true) {
+            if (scanner.hasNextInt()) {
+                rows = scanner.nextInt();
+                if (rows < 1) {
+                    System.out.println("Enter a valid number of rows: ");
+                    continue;
+                } else {
+                    scanner.nextLine();
+                    break;
+                }
+            }
+        }
+
+        // Loop for columns.
+        System.out.println("How many columns do you want for your board?");
+        while(true) {
+            if (scanner.hasNextInt()) {
+                columns = scanner.nextInt();
+                if (columns < 1) {
+                    System.out.println("Enter a valid number of columns: ");
+                    continue;
+                } else {
+                    scanner.nextLine();
+                    break;
+                }
+            }
+        }
+
+        this.board.createBoard(difficulty, columns, rows);
+    }
+
 
     private void promptPlayerPlaceSymbol() {
         boolean rowInput = false;
