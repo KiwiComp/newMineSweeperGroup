@@ -90,6 +90,19 @@ public class GameManager {
     }
 
 
+    private void promptPlayerPlaceSymbol() {
+        boolean rowInput = false;
+        boolean columnInput = false;
+        boolean validInput = false;
+
+        while(!validInput) {
+            while(!rowInput) {
+                System.out.println("\nChoose a row to place your mark: ");
+
+            }
+        }
+    }
+
 
     /**
      * Creates the minesweeper game boards.

@@ -26,17 +26,14 @@ public class Board {
         }
     }
 
+    public boolean isSquareAvailable(int row, int column) {
 
-    public void placePlayerSymbol() {
+    }
+
+    public void placePlayerSymbol(int row, int column) {
         boolean validInput = false;
         while (!validInput) {
-
-            System.out.println("\nChoose a row to place your mark: ");
-            int chosenRow = scanner.nextInt() - 1;
-            scanner.nextLine();
             System.out.println("Choose a column to place your mark: ");
-            int chosenColumn = scanner.nextInt() - 1;
-            scanner.nextLine();
 
             if (chosenRow >= 0 && chosenRow < bombCollection.length &&
                     chosenColumn >= 0 && chosenColumn < bombCollection.length) {
@@ -49,9 +46,6 @@ public class Board {
                 } else if (bombCollection[chosenRow][chosenColumn] == '?') {
                     System.out.println("Safe spot!");
                     boardCollection[chosenRow][chosenColumn] = 'X';
-                    this.printVisibleBoard();
-                    weHaveAWinner = isWin();
-                    validInput = true;
                 }
             }
         }
