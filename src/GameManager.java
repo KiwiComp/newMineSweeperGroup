@@ -30,8 +30,7 @@ public class GameManager {
             if (playerName.isEmpty()) {
                 System.out.println("Enter a valid name!");
             } else {
-                player = new Player();
-                player.setName(playerName);
+                this.player = new Player(playerName);
                 validNameInput = true;
             }
         }
@@ -50,7 +49,6 @@ public class GameManager {
 
     /**
      * Asks user to select game difficulty.
-
      */
     private void promptGameDifficulty() {
         boolean isRunning = true;
@@ -93,15 +91,12 @@ public class GameManager {
         board.placeBombs(difficulty);
 //        board.placeBombAdjacentHints(0, 0);
         System.out.println("Game has started!");
-        board.printVisibleBoard();
     }
 
     /**
      * Evaluates a round after each player move.
      * @return - Returns false if this game session is over. True if game proceeds.
      */
-
-    /*
     private boolean evaluateRound() {
         // Check if a square is a bomb before placing player symbol.
         if (this.board.isSquareBomb(this.userInput)) {
@@ -125,11 +120,9 @@ public class GameManager {
             System.out.println("You have played: " + this.board.getGamesPlayed() + " games.");
             System.out.println("You've won: " + this.getWins() + " times.");
             System.out.println("Restarting game.");
-            this.resetGame();
             return false;
         } else {
             return true;
         }
     }
-    */
 }

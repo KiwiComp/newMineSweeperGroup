@@ -8,44 +8,14 @@ public class Board {
     private int rowCollection;
     private char[][] boardCollection = new char[rowCollection][columnCollection];
     private char[][] bombCollection = new char[rowCollection][columnCollection];
-    Scanner scanner = new Scanner(System.in);
-    Player player = new Player();
-    private boolean gameEnd = false;
-    private boolean weHaveAWinner = false;
-    private int difficultyLevel;
-    private boolean closeApplication = false;
-
-
-
-    public Board() {
-
-    }
-
-
-    public boolean getGameEnd() {
-        return gameEnd;
-    }
-
-    public boolean getWeHaveAWinner() {
-        return weHaveAWinner;
-    }
-
-    public void setGameEnd(boolean gameEnd) {
-        this.gameEnd = gameEnd;
-    }
-
-    public void setWeHaveAWinner(boolean weHaveAWinner) {
-        this.weHaveAWinner = weHaveAWinner;
-    }
-
 
     public void createBoard(int difficulty) {
-//        System.out.println("How many rows do you want for your board?");
-//        rowCollection = scanner.nextInt();
-//        scanner.nextLine();
-//        System.out.println("How many columns do you want for your board?");
-//        columnCollection = scanner.nextInt();
-//        scanner.nextLine();
+        System.out.println("How many rows do you want for your board?");
+        rowCollection = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("How many columns do you want for your board?");
+        columnCollection = scanner.nextInt();
+        scanner.nextLine();
         rowCollection = 5 * difficulty;
         columnCollection = 5 * difficulty;
         boardCollection = new char[rowCollection][columnCollection];
@@ -96,7 +66,7 @@ public class Board {
                 bombCollection[row][column] = '?';
             }
         }
-        difficultyLevel = 5*difficulty;
+        int difficultyLevel = 5*difficulty;
 
         Random random = new Random();
 
@@ -112,29 +82,24 @@ public class Board {
         }
     }
 
-
-
-
-
-
-    public boolean isWin() {
-        int totalSafeSpots = rowCollection*columnCollection-difficultyLevel;
-        int revealedSafeSpots = 0;
-        for(char[] row : boardCollection) {
-            for(char symbol : row) {
-                if(symbol == 'X') {
-                    revealedSafeSpots++;
-                }
-            }
-        }
-        if(revealedSafeSpots==totalSafeSpots) {
-            System.out.println("You have won!");
-            player.incrementGamesPlayed();
-            player.incrementWins();
-            return true;
-        }
-        return false;
-    }
+//    public boolean isWin() {
+//        int totalSafeSpots = rowCollection*columnCollection-difficultyLevel;
+//        int revealedSafeSpots = 0;
+//        for(char[] row : boardCollection) {
+//            for(char symbol : row) {
+//                if(symbol == 'X') {
+//                    revealedSafeSpots++;
+//                }
+//            }
+//        }
+//        if(revealedSafeSpots==totalSafeSpots) {
+//            System.out.println("You have won!");
+//            player.incrementGamesPlayed();
+//            player.incrementWins();
+//            return true;
+//        }
+//        return false;
+//    }
 
     public int placeBombAdjacentHints(int columnSpot, int rowSpot){
         int bombAmount = 0;
