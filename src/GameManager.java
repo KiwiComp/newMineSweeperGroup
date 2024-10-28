@@ -242,6 +242,8 @@ public class GameManager {
             System.out.println("Restarting game.");
             return false;
         } else {
+            // Uncomment when finished.
+//            this.board.placeBombAdjacentHints(this.chosenRow, this.chosenColumn);
             return true;
         }
     }
