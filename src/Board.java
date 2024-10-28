@@ -20,12 +20,20 @@ public class Board {
         }
     }
 
-    public boolean isSquareAvailable(int row, int column) {
-
+    /**
+     * Checks if a square is available.
+     * @param chosenRow - User selected row.
+     * @param chosenColumn - User selected column.
+     * @return - True if available, otherwise false.
+     */
+    public boolean isSquareAvailable(int chosenRow, int chosenColumn) {
+        return boardCollection[chosenRow][chosenColumn] != 'X';
     }
 
-    public void placePlayerSymbol(int row, int column) {
+
+    public void placePlayerSymbol(int chosenRow, int chosenColumn) {
         boolean validInput = false;
+
         while (!validInput) {
             System.out.println("Choose a column to place your mark: ");
 
@@ -121,17 +129,9 @@ public class Board {
         return bombAmount;
     }
 
-        // printBoard-metoden
-        /*public void printVisibleBoard() {
-            System.out.println("Current Board:");
-            for (int row = 0; row < rowCollection; row++) {
-                for (int column = 0; column < columnCollection; column++) {
-                    System.out.println(boardCollection[row][column] + " ");
-                }
-                System.out.println(); // Ny rad efter varje rad på brädet
-            }
-        }*/
-
+    /**
+     * Prints the minesweeper board to stdout.
+     */
     public void printVisibleBoard() {
         System.out.print("      ");
         for(int i = 0; i< numberOfColumns; i++) {
