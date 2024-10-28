@@ -30,6 +30,16 @@ public class Board {
         return boardCollection[chosenRow][chosenColumn] != 'X';
     }
 
+    /**
+     * Checks if a square is a bomb.
+     * @param chosenRow - User selected row.
+     * @param chosenColumn - User selected column.
+     * @return - True if is a bomb, otherwise false.
+     */
+    public boolean isSquareBomb(int chosenRow, int chosenColumn) {
+        return this.bombCollection[chosenRow][chosenColumn] == '*';
+    }
+
 
     public void placePlayerSymbol(int chosenRow, int chosenColumn) {
         boolean validInput = false;
