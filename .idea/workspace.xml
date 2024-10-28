@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e5a4d3a-feb0-4ad8-b6f9-f2c3965d8f9d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
+    <list default="true" id="0e5a4d3a-feb0-4ad8-b6f9-f2c3965d8f9d" name="Changes" comment="Add logic for checking if user wants to quit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <list id="204872c1-aeb6-461d-aad1-c50343058897" name="Changes by angie" comment="" />
     <list id="b31ffbca-ca9e-4ae0-8417-c9273599f059" name="Changes by gio" comment="" />
@@ -20,41 +19,41 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "dlovans"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;dlovans&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/KiwiComp/newMineSweeperGroup.git",
-    "accountId": "d2a0dd50-1953-40fb-aec1-c9f3ba7c32bd"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/KiwiComp/newMineSweeperGroup.git&quot;,
+    &quot;accountId&quot;: &quot;d2a0dd50-1953-40fb-aec1-c9f3ba7c32bd&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2o4Yq5wqqKbE3OMc50iFn0IpExt" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "dlovan-refactor-codebase",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/dlovan/Desktop/skola/java/newMineSweeperGroup",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dlovan-refactor-codebase&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/dlovan/Desktop/skola/java/newMineSweeperGroup&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -88,9 +87,85 @@
       <workItem from="1730117435948" duration="6050000" />
       <workItem from="1730130503561" duration="989000" />
     </task>
+    <task id="LOCAL-00001" summary="Declare method asking user how many rows and columns for the board">
+      <option name="closed" value="true" />
+      <created>1730134929235</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1730134929235</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Move game control flow from Board to GameManager">
+      <option name="closed" value="true" />
+      <created>1730135206549</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730135206549</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Refactor method prompting user to enter row and column placement">
+      <option name="closed" value="true" />
+      <created>1730136518296</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730136518296</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Declare isSquareAvailable method, refactor Board methods">
+      <option name="closed" value="true" />
+      <created>1730136786995</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730136786995</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Declare isSquareBomb method">
+      <option name="closed" value="true" />
+      <created>1730136831126</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730136831126</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Refactor and remove redundant code">
+      <option name="closed" value="true" />
+      <created>1730137116372</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730137116372</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Update game control flow">
+      <option name="closed" value="true" />
+      <created>1730137127557</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1730137127557</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add logic for checking if user wants to quit">
+      <option name="closed" value="true" />
+      <created>1730137688237</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1730137688237</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Declare method asking user how many rows and columns for the board" />
+    <MESSAGE value="Move game control flow from Board to GameManager" />
+    <MESSAGE value="Refactor method prompting user to enter row and column placement" />
+    <MESSAGE value="Declare isSquareAvailable method, refactor Board methods" />
+    <MESSAGE value="Declare isSquareBomb method" />
+    <MESSAGE value="Refactor and remove redundant code" />
+    <MESSAGE value="Update game control flow" />
+    <MESSAGE value="Add logic for checking if user wants to quit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add logic for checking if user wants to quit" />
   </component>
 </project>

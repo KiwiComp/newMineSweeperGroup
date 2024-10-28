@@ -8,10 +8,9 @@ public class GameManager {
     private int chosenRow;
     private int chosenColumn;
 
-    public GameManager() {
-
-    }
-
+    /**
+     * Entry point of the program. Runs the program.
+     */
     public void run() {
         System.out.println("\n\n====================== WELCOME TO MINESWEEPER! ==========================\n\n");
         this.promptCreatePlayer();
@@ -20,7 +19,6 @@ public class GameManager {
         while(true) {
             this.promptGameDifficulty();
             this.promptCreateBoard();
-            // Utilize checkQuitCommand in every method using the Scanner.
 
             // Game session loop.
             while (true) {
@@ -69,7 +67,6 @@ public class GameManager {
      */
     private void promptGameDifficulty() {
         boolean isRunning = true;
-        int difficulty;
         String userInput;
 
         System.out.println("Please enter a game difficulty:");
@@ -110,27 +107,45 @@ public class GameManager {
     private void promptCreateBoard() {
         int rows;
         int columns;
-
-        System.out.println("How many rows do you want for your board?");
+        String temp;
 
         // Loop for rows.
+        System.out.println("How many rows do you want for your board?");
         while(true) {
-            if (scanner.hasNextInt()) {
-                rows = scanner.nextInt();
+            if (scanner.hasNextLine()) {
+                temp = scanner.nextLine();
+                this.checkQuitCommand(temp);
+                try {
+                    rows = Integer.parseInt(temp);
+                } catch (NumberFormatException e) {
+                    System.out.println("Enter a valid number of rows: ");
+                    continue;
+                }
+
                 if (rows < 1) {
                     System.out.println("Enter a valid number of rows: ");
                 } else {
-                    scanner.nextLine();
                     break;
                 }
+            } else {
+                System.out.println("Enter a valid number of rows: ");
             }
         }
 
         // Loop for columns.
         System.out.println("How many columns do you want for your board?");
         while(true) {
-            if (scanner.hasNextInt()) {
-                columns = scanner.nextInt();
+            if (scanner.hasNextLine()) {
+                temp = scanner.nextLine();
+                this.checkQuitCommand(temp);
+
+                try {
+                    columns = Integer.parseInt(temp);
+                } catch (NumberFormatException e) {
+                    System.out.println("Enter a valid number of columns: ");
+                    continue;
+                }
+
                 if (columns < 1) {
                     System.out.println("Enter a valid number of columns: ");
                 } else {
@@ -140,8 +155,8 @@ public class GameManager {
             }
         }
 
-        this.board.createBoard(difficulty, columns, rows);
-        this.board.placeBombs(difficulty);
+        this.board.createBoard(this.difficulty, columns, rows);
+        this.board.placeBombs(this.difficulty);
         System.out.println("Game has started!");
     }
 
@@ -151,14 +166,21 @@ public class GameManager {
     private void promptPlayerPlaceSymbol() {
         boolean rowInput = false;
         boolean columnInput = false;
+        String temp;
 
         while(true) {
             while(!rowInput) {
                 this.board.printVisibleBoard();
                 System.out.println("\nChoose a row to place your mark: ");
-                if (scanner.hasNextInt()) {
-                    rowInput = true;
-                    this.chosenRow = scanner.nextInt();
+                if (scanner.hasNextLine()) {
+                    temp = scanner.nextLine();
+                    this.checkQuitCommand(temp);
+                    try {
+                        this.chosenRow = Integer.parseInt(temp);
+                        rowInput = true;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Enter a valid number of rows: ");
+                    }
                 } else {
                     System.out.println("Enter a valid row number: ");
                 }
@@ -167,18 +189,27 @@ public class GameManager {
             while(!columnInput) {
                 this.board.printVisibleBoard();
                 System.out.println("\nChoose a column to place your mark: ");
-                if (scanner.hasNextInt()) {
-                    columnInput = true;
-                    this.chosenColumn = scanner.nextInt();
+                if (scanner.hasNextLine()) {
+                    temp = scanner.nextLine();
+                    this.checkQuitCommand(temp);
+                    try {
+                        this.chosenColumn = Integer.parseInt(temp);
+                        columnInput = true;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Enter a valid number of columns: ");
+                    }
                 } else {
                     System.out.println("Enter a valid column number: ");
                 }
             }
+
             if (this.board.isSquareAvailable(this.chosenRow, this.chosenColumn)) {
                 // Square is available. Break outer loop.
                 break;
             } else {
                 System.out.println("This spot is taken, chose another one.");
+                rowInput = false;
+                columnInput = false;
             }
         }
     }
