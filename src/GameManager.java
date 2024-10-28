@@ -17,7 +17,7 @@ public class GameManager {
         // Game loop.
         while(true) {
             this.promptGameDifficulty();
-            this.createGame(this.difficulty);
+            this.promptCreateBoard();
 
             // Game session loop.
             while (true) {
@@ -129,6 +129,8 @@ public class GameManager {
         }
 
         this.board.createBoard(difficulty, columns, rows);
+        this.board.placeBombs(difficulty);
+        System.out.println("Game has started!");
     }
 
 
@@ -143,18 +145,6 @@ public class GameManager {
 
             }
         }
-    }
-
-
-    /**
-     * Creates the minesweeper game boards.
-     * @param difficulty - Difficulty of game session.
-     */
-    private void createGame(int difficulty) {
-        board.createBoard(difficulty);
-        board.placeBombs(difficulty);
-//        board.placeBombAdjacentHints(0, 0);
-        System.out.println("Game has started!");
     }
 
     /**
