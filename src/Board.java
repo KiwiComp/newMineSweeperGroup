@@ -40,27 +40,13 @@ public class Board {
         return this.bombCollection[chosenRow][chosenColumn] == '*';
     }
 
-
+    /**
+     * Places player symbol.
+     * @param chosenRow - User selected row.
+     * @param chosenColumn - User selected column.
+     */
     public void placePlayerSymbol(int chosenRow, int chosenColumn) {
-        boolean validInput = false;
-
-        while (!validInput) {
-            System.out.println("Choose a column to place your mark: ");
-
-            if (chosenRow >= 0 && chosenRow < bombCollection.length &&
-                    chosenColumn >= 0 && chosenColumn < bombCollection.length) {
-                if (boardCollection[chosenRow][chosenColumn] == 'X') {
-                    System.out.println("This spot is taken, chose another one.");
-                } else if (bombCollection[chosenRow][chosenColumn] == '*') {
-                    System.out.println("BOOM!");
-                    //add games played code
-                    gameEnd = true;
-                } else if (bombCollection[chosenRow][chosenColumn] == '?') {
-                    System.out.println("Safe spot!");
-                    boardCollection[chosenRow][chosenColumn] = 'X';
-                }
-            }
-        }
+        boardCollection[chosenRow][chosenColumn] = 'X';
     }
 
 
