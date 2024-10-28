@@ -39,13 +39,15 @@ public class Board {
     }
 
 
-    public void createBoard() {
-        System.out.println("How many rows do you want for your board?");
-        rowCollection = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("How many columns do you want for your board?");
-        columnCollection = scanner.nextInt();
-        scanner.nextLine();
+    public void createBoard(int difficulty) {
+//        System.out.println("How many rows do you want for your board?");
+//        rowCollection = scanner.nextInt();
+//        scanner.nextLine();
+//        System.out.println("How many columns do you want for your board?");
+//        columnCollection = scanner.nextInt();
+//        scanner.nextLine();
+        rowCollection = 5 * difficulty;
+        columnCollection = 5 * difficulty;
         boardCollection = new char[rowCollection][columnCollection];
         for (int row = 0; row < rowCollection; row++) {
             for (int column = 0; column < columnCollection; column++) {
@@ -87,14 +89,14 @@ public class Board {
 
 
 
-    public void placeBombs(int bombAmount) {
+    public void placeBombs(int difficulty) {
         bombCollection = new char[rowCollection][columnCollection];
         for(int row = 0; row <rowCollection; row++) {
             for(int column = 0; column < columnCollection; column++) {
                 bombCollection[row][column] = '?';
             }
         }
-        difficultyLevel = bombAmount;
+        difficultyLevel = 5*difficulty;
 
         Random random = new Random();
 
@@ -167,7 +169,7 @@ public class Board {
     }
 
         // printBoard-metoden
-        public void printVisibleBoard() {
+        /*public void printVisibleBoard() {
             System.out.println("Current Board:");
             for (int row = 0; row < rowCollection; row++) {
                 for (int column = 0; column < columnCollection; column++) {
@@ -175,5 +177,31 @@ public class Board {
                 }
                 System.out.println(); // Ny rad efter varje rad på brädet
             }
+        }*/
+
+    public void printVisibleBoard() {
+        System.out.print("      ");
+        for(int i = 0; i< columnCollection; i++) {
+            System.out.print((i+1) + "     ");
         }
+        System.out.println();
+        for(int row = 0; row < rowCollection; row++) {
+            System.out.print("   ");
+            for(int i = 0; i < columnCollection; i++) {
+                System.out.print("+-----");
+            }
+            System.out.println("+");
+            System.out.print((row+1) +"  ");
+            for(int column = 0; column < columnCollection; column++) {
+                char cell = boardCollection[row][column];
+                System.out.print("|  "+cell+"  ");
+            }
+            System.out.println("|");
+        }
+        System.out.print("   ");
+        for(int i = 0; i< columnCollection; i++) {
+            System.out.print("+-----");
+        }
+        System.out.println("+");
+    }
 }
