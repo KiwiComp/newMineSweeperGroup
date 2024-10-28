@@ -1,10 +1,12 @@
 import java.util.Scanner;
 
 public class GameManager {
-    private Board board = new Board();
+    final private Board board = new Board();
     private Player player;
-    private Scanner scanner = new Scanner(System.in);
+    final private Scanner scanner = new Scanner(System.in);
     private int difficulty;
+    private int chosenRow;
+    private int chosenColumn;
 
     public GameManager() {
 
@@ -21,7 +23,11 @@ public class GameManager {
 
             // Game session loop.
             while (true) {
-
+                this.board.printVisibleBoard();
+                this.promptPlayerPlaceSymbol();
+                if (this.evaluateRound()) {
+                    break;
+                }
             }
         }
     }
@@ -133,16 +139,42 @@ public class GameManager {
         System.out.println("Game has started!");
     }
 
-
+    /**
+     * Asks user which minesweeper square to unlock.
+     */
     private void promptPlayerPlaceSymbol() {
         boolean rowInput = false;
         boolean columnInput = false;
-        boolean validInput = false;
 
-        while(!validInput) {
+        while(true) {
             while(!rowInput) {
+                this.board.printVisibleBoard();
                 System.out.println("\nChoose a row to place your mark: ");
+                if (scanner.hasNextInt()) {
+                    rowInput = true;
+                    this.chosenRow = scanner.nextInt();
+                } else {
+                    System.out.println("Enter a valid row number: ");
+                    continue;
+                }
+            }
 
+            while(!columnInput) {
+                this.board.printVisibleBoard();
+                System.out.println("\nChoose a column to place your mark: ");
+                if (scanner.hasNextInt()) {
+                    columnInput = true;
+                    this.chosenColumn = scanner.nextInt();
+                } else {
+                    System.out.println("Enter a valid column number: ");
+                    continue;
+                }
+            }
+            if (this.board.isSquareAvailable(this.chosenRow, this.chosenColumn)) {
+                // Square is available. Break outer loop.
+                break;
+            } else {
+                System.out.println("This spot is taken, chose another one.");
             }
         }
     }
@@ -155,11 +187,10 @@ public class GameManager {
         // Check if a square is a bomb before placing player symbol.
         if (this.board.isSquareBomb(this.userInput)) {
             System.out.println("You triggered a bomb. You lost.");
-            this.board.incrementGamesPlayed();
-            System.out.println("You have played: " + this.board.getGamesPlayed() + " games.");
-            System.out.println("You've won: " + this.getWins() + " times.");
+            this.player.incrementGamesPlayed();
+            System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
+            System.out.println("You've won: " + this.player.getWins() + " times.");
             System.out.println("Restarting game.");
-            this.resetGame();
             return false;
         } else {
             // Place player symbol in selected square.
