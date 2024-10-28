@@ -13,6 +13,8 @@ public class GameManager {
     public void run() {
         System.out.println("\n\n====================== WELCOME TO MINESWEEPER! ==========================\n\n");
         this.promptCreatePlayer();
+        this.promptGameDifficulty();
+        this.createGame(difficulty);
     }
 
     /**
@@ -81,21 +83,25 @@ public class GameManager {
     }
 
 
+
     /**
      * Creates the minesweeper game boards.
      * @param difficulty - Difficulty of game session.
      */
     private void createGame(int difficulty) {
-        board.createBoard();
+        board.createBoard(difficulty);
         board.placeBombs(difficulty);
-        board.placeBombAdjacentHints(0, 0);
+//        board.placeBombAdjacentHints(0, 0);
         System.out.println("Game has started!");
+        board.printVisibleBoard();
     }
 
     /**
      * Evaluates a round after each player move.
      * @return - Returns false if this game session is over. True if game proceeds.
      */
+
+    /*
     private boolean evaluateRound() {
         // Check if a square is a bomb before placing player symbol.
         if (this.board.isSquareBomb(this.userInput)) {
@@ -125,4 +131,5 @@ public class GameManager {
             return true;
         }
     }
+    */
 }
