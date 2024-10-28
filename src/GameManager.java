@@ -25,7 +25,7 @@ public class GameManager {
             while (true) {
                 this.board.printVisibleBoard();
                 this.promptPlayerPlaceSymbol();
-                if (this.evaluateRound()) {
+                if (!this.evaluateRound()) {
                     break;
                 }
             }
@@ -185,7 +185,7 @@ public class GameManager {
      */
     private boolean evaluateRound() {
         // Check if a square is a bomb before placing player symbol.
-        if (this.board.isSquareBomb(this.userInput)) {
+        if (this.board.isSquareBomb(this.chosenRow, this.chosenColumn)) {
             System.out.println("You triggered a bomb. You lost.");
             this.player.incrementGamesPlayed();
             System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
@@ -194,7 +194,7 @@ public class GameManager {
             return false;
         } else {
             // Place player symbol in selected square.
-            this.board.placePlayerSymbol(this.userInput);
+            this.board.placePlayerSymbol(this.chosenRow, this.chosenColumn);
         }
 
         // Check if there is a win condition.
