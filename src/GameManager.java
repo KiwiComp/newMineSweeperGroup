@@ -20,6 +20,7 @@ public class GameManager {
         while(true) {
             this.promptGameDifficulty();
             this.promptCreateBoard();
+            // Utilize checkQuitCommand in every method using the Scanner.
 
             // Game session loop.
             while (true) {
@@ -42,6 +43,7 @@ public class GameManager {
 
         while(!validNameInput) {
             String playerName = scanner.nextLine();
+            this.checkQuitCommand(playerName);
             if (playerName.isEmpty()) {
                 System.out.println("Enter a valid name!");
             } else {
@@ -68,29 +70,35 @@ public class GameManager {
     private void promptGameDifficulty() {
         boolean isRunning = true;
         int difficulty;
+        String userInput;
 
         System.out.println("Please enter a game difficulty:");
-        System.out.println("1. Easy");
-        System.out.println("2. Normal");
-        System.out.println("3. Hard");
-        System.out.println("4. Insane");
 
         while(isRunning) {
-            if (scanner.hasNextInt()) {
-                difficulty = scanner.nextInt();
-                scanner.nextLine();
+            System.out.println("1. Easy");
+            System.out.println("2. Normal");
+            System.out.println("3. Hard");
+            System.out.println("4. Insane");
 
-                if (difficulty < 1 || difficulty > 4) {
-                    System.out.println("Enter a valid difficulty level: ");
-                    System.out.println("1. Easy");
-                    System.out.println("2. Normal");
-                    System.out.println("3. Hard");
-                    System.out.println("4. Insane");
+            if (scanner.hasNextLine()) {
+                userInput = scanner.nextLine();
+                this.checkQuitCommand(userInput);
+
+                try {
+                    this.difficulty = Integer.parseInt(userInput);
+                } catch (NumberFormatException e) {
+                    System.out.println("Enter a valid difficulty level:");
                     continue;
                 }
 
-                this.difficulty = difficulty;
+                if (this.difficulty < 1 || this.difficulty > 4) {
+                    System.out.println("Enter a valid difficulty level: ");
+                    continue;
+                }
+
                 isRunning = false;
+            } else {
+                System.out.println("Enter a valid difficulty level: ");
             }
         }
     }
@@ -111,7 +119,6 @@ public class GameManager {
                 rows = scanner.nextInt();
                 if (rows < 1) {
                     System.out.println("Enter a valid number of rows: ");
-                    continue;
                 } else {
                     scanner.nextLine();
                     break;
@@ -126,7 +133,6 @@ public class GameManager {
                 columns = scanner.nextInt();
                 if (columns < 1) {
                     System.out.println("Enter a valid number of columns: ");
-                    continue;
                 } else {
                     scanner.nextLine();
                     break;
@@ -155,7 +161,6 @@ public class GameManager {
                     this.chosenRow = scanner.nextInt();
                 } else {
                     System.out.println("Enter a valid row number: ");
-                    continue;
                 }
             }
 
@@ -167,7 +172,6 @@ public class GameManager {
                     this.chosenColumn = scanner.nextInt();
                 } else {
                     System.out.println("Enter a valid column number: ");
-                    continue;
                 }
             }
             if (this.board.isSquareAvailable(this.chosenRow, this.chosenColumn)) {
