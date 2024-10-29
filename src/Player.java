@@ -25,17 +25,14 @@ public class Player {
     /**
      * Creates a Player instance.
      */
-    public Player() {
+    public Player(String name) {
+        this.name = name;
         this.wins = 0;
         this.gamesPlayed = 0;
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getWins() {
@@ -48,10 +45,6 @@ public class Player {
 
     public String getPlayerSymbol() {
         return playerSymbol;
-    }
-
-    public void setPlayerSymbol(String playerSymbol) {
-        this.playerSymbol = playerSymbol;
     }
 
     public void incrementWins() {
