@@ -7,14 +7,14 @@ public class Board {
     private char[][] boardCollection = new char[numberOfRows][numberOfColumns];
     private char[][] bombCollection = new char[numberOfRows][numberOfColumns];
 
-    public void createBoard(int difficulty, int columns, int rows) {
+    public void createBoard(int difficulty) {
         this.numberOfRows = 5 * difficulty;
         this.numberOfColumns = 5 * difficulty;
-        this.boardCollection = new char[rows][columns];
+        this.boardCollection = new char[this.numberOfRows][this.numberOfColumns];
 
         // Adds question marks to empty board squares.
-        for (int row = 0; row < rows; row++) {
-            for (int column = 0; column < columns; column++) {
+        for (int row = 0; row < this.numberOfRows; row++) {
+            for (int column = 0; column < this.numberOfColumns; column++) {
                 boardCollection[row][column] = '?';
             }
         }
