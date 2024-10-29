@@ -171,7 +171,7 @@ public class GameManager {
         // Check if a square is a bomb before placing player symbol.
         if (this.board.isSquareBomb(this.chosenRow, this.chosenColumn)) {
             System.out.println("You triggered a bomb. You lost.");
-            scoreboard();
+            this.scoreboard();
             return false;
         } else {
             // Place player symbol in selected square.
@@ -182,7 +182,7 @@ public class GameManager {
         if (this.board.isWin(this.difficulty)) {
             System.out.println("You win!");
             this.player.incrementWins();
-            scoreboard();
+            this.scoreboard();
             return false;
         } else {
             this.board.adjacentHints(this.chosenRow, this.chosenColumn);
@@ -205,7 +205,7 @@ public class GameManager {
             } else if (userInput.equals("n")) {
                 System.out.println("The game is ending. Thank you for playing!");
                 validInput = true;
-                closeApplication = true;
+                this.closeApplication = true;
                 System.exit(0);
             } else {
                 System.out.println("Invalid choice. Enter 'y' to start a new round or 'n' to exit.");
