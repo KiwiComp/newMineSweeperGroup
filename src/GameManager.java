@@ -29,7 +29,7 @@ public class GameManager {
                     break;
                 }
             }
-            // method promptNewGame, using class boolean closeApplication for no option.
+            promptNewGame();
         }
     }
 
@@ -224,11 +224,7 @@ public class GameManager {
         // Check if a square is a bomb before placing player symbol.
         if (this.board.isSquareBomb(this.chosenRow, this.chosenColumn)) {
             System.out.println("You triggered a bomb. You lost.");
-
             scoreboard();
-            promptNewGame(); // Call promptNewGame to ask about starting a new round or exiting.
-
-
             return false;
         } else {
             // Place player symbol in selected square.
@@ -246,30 +242,37 @@ public class GameManager {
             return true;
         }
 
-        public void promptNewGame() {
-                System.out.println("Do you want to start a new round? (y/n)");
-                String userInput = Scanner.nextLine().toLowerCase(); // Read player's input
 
+    }
 
-                if (userInput.equals("j")) {
-                    createGame(difficulty);
-                } else if (userInput.equals("n")) {
-                    System.out.println("The game is ending. Thank you for playing!");
-                    System.exit(0);
-                } else {
-                    System.out.println("Invalid choice. Enter 'y' to start a new round or 'n' to exit.");
-                    promptNewGame();
-                }
+    public void promptNewGame() {
+        System.out.println("Do you want to start a new round? (y/n)");
+        boolean validInput = false;
+
+        while(!validInput) {
+            String userInput = scanner.nextLine().toLowerCase(); // Read player's input
+            if (userInput.equals("y")) {
+                System.out.println("You're starting a new game.\n");
+                validInput = true;
+//                createGame(difficulty);
+            } else if (userInput.equals("n")) {
+                System.out.println("The game is ending. Thank you for playing!");
+                validInput = true;
+                closeApplication = true;
+                System.exit(0);
+            } else {
+                System.out.println("Invalid choice. Enter 'y' to start a new round or 'n' to exit.");
             }
         }
     }
-    /**
-     * Writes out amount of wins and games played
-     */
-    public void scoreboard(){
-        this.player.incrementGamesPlayed();
-        System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
-        System.out.println("You've won: " + this.player.getWins() + " times.");
-        System.out.println("Restarting game.");
-    }
+}
+/**
+ * Writes out amount of wins and games played
+ */
+public void scoreboard(){
+    this.player.incrementGamesPlayed();
+    System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
+    System.out.println("You've won: " + this.player.getWins() + " times.");
+    System.out.println("Restarting game.");
+}
 }
