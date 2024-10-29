@@ -19,8 +19,6 @@ public class GameManager {
         // Game loop.
         while(!closeApplication) {
             this.promptGameDifficulty();
-            this.promptCreateBoard();
-
             // Game session loop.
             while (true) {
                 this.board.printVisibleBoard();
@@ -85,6 +83,7 @@ public class GameManager {
 
                 try {
                     this.difficulty = Integer.parseInt(userInput);
+                    this.board.createBoard(this.difficulty);
                 } catch (NumberFormatException e) {
                     System.out.println("Enter a valid difficulty level:");
                     continue;
@@ -102,37 +101,6 @@ public class GameManager {
         }
     }
 
-    /**
-     * Asks user how many rows and columns the board should have.
-     * Creates board based on input.
-     */
-    private void promptCreateBoard() {
-        int rows;
-        int columns;
-        String temp;
-
-        // Loop for rows.
-        System.out.println("How many rows do you want for your board?");
-        while(true) {
-            if (scanner.hasNextLine()) {
-                temp = scanner.nextLine();
-                this.checkQuitCommand(temp);
-                try {
-                    rows = Integer.parseInt(temp);
-                } catch (NumberFormatException e) {
-                    System.out.println("Enter a valid number of rows: ");
-                    continue;
-                }
-
-                if (rows < 1) {
-                    System.out.println("Enter a valid number of rows: ");
-                } else {
-                    break;
-                }
-            } else {
-                System.out.println("Enter a valid number of rows: ");
-            }
-        }
 
         // Loop for columns.
         System.out.println("How many columns do you want for your board?");
