@@ -46,7 +46,7 @@ public class Board {
      * @param chosenColumn - User selected column.
      */
     public void placePlayerSymbol(int chosenRow, int chosenColumn) {
-        boardCollection[chosenRow][chosenColumn] = 'X';
+        boardCollection[chosenRow][chosenColumn] = adjacentHints(chosenRow,chosenColumn);
     }
 
 
@@ -74,56 +74,47 @@ public class Board {
         }
     }
 
-//    public boolean isWin() {
-//        int totalSafeSpots = rowCollection*columnCollection-difficultyLevel;
-//        int revealedSafeSpots = 0;
-//        for(char[] row : boardCollection) {
-//            for(char symbol : row) {
-//                if(symbol == 'X') {
-//                    revealedSafeSpots++;
-//                }
-//            }
-//        }
-//        if(revealedSafeSpots==totalSafeSpots) {
-//            System.out.println("You have won!");
-//            player.incrementGamesPlayed();
-//            player.incrementWins();
-//            return true;
-//        }
-//        return false;
-//    }
+/*    public boolean isWin() {
+        int totalSafeSpots = rowCollection*columnCollection-difficultyLevel;
+        int revealedSafeSpots = 0;
+        for(char[] row : boardCollection) {
+            for(char symbol : row) {
+                if(symbol == (char)adjacentHints(row,row)) {
+                    revealedSafeSpots++;
+                }
+            }
+        }
+        if(revealedSafeSpots==totalSafeSpots) {
+            System.out.println("You have won!");
+            player.incrementGamesPlayed();
+            player.incrementWins();
+            return true;
+        }
+       return false;
+    }*/
 
-    public int placeBombAdjacentHints(int columnSpot, int rowSpot){
+    public char adjacentHints(int rowSpot, int columnSpot){
         int bombAmount = 0;
-        for (int i = -1; i < 1; i++) {
-            if (columnSpot - 1 >= 0 && rowSpot + i >= 0) {
-                /*
-                if(checkBomb(columnSpot - 1, rowSpot + i)){
+        for (int i = -1; i < 2; i++) {
+            if (rowSpot - 1 >= 0 && columnSpot + i >= 0 && columnSpot + i < numberOfColumns) {
+                if(isSquareBomb(rowSpot - 1, columnSpot + i)){
                     bombAmount++;
                 }
-                 */
             }
-        }
-        for (int i = -1; i < 1; i++) {
-            if (rowSpot + i >= 0) {
-                /*
-                if(checkBomb(columnSpot, rowSpot + i)){
+            if (columnSpot + i >= 0 && columnSpot + i < numberOfColumns) {
+                if(isSquareBomb(rowSpot, columnSpot + i)){
                     bombAmount++;
                 }
-                 */
             }
-        }
-        for (int i = -1; i < 1; i++) {
-            if (columnSpot + 1 >= 0 && rowSpot + i >= 0) {
-                /*
-                if(checkBomb(columnSpot + 1, rowSpot + i)){
+            if (rowSpot + 1 < numberOfRows && columnSpot + i >= 0 && columnSpot + i < numberOfColumns) {
+                if(isSquareBomb(rowSpot + 1, columnSpot + i)){
                     bombAmount++;
                 }
-                 */
             }
         }
-        return bombAmount;
+        return (char) (bombAmount + '0');
     }
+
 
     /**
      * Prints the minesweeper board to stdout.
