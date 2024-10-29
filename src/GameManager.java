@@ -1,51 +1,32 @@
 import java.util.Scanner;
 
 public class GameManager {
-    private Board board = new Board();
+    final private Board board = new Board();
     private Player player;
-    private Scanner scanner = new Scanner(System.in);
+    final private Scanner scanner = new Scanner(System.in);
     private int difficulty;
-    private boolean closeApplication = false;
+    private int chosenRow;
+    private int chosenColumn;
 
-    public GameManager() {
-
-    }
-
+    /**
+     * Entry point of the program. Runs the program.
+     */
     public void run() {
         System.out.println("\n\n====================== WELCOME TO MINESWEEPER! ==========================\n\n");
         this.promptCreatePlayer();
-        while(!closeApplication) {
-            this.board.createBoard();
-            board.printVisibleBoard();
-            System.out.println("How many bombs do you want?");
-            board.placeBombs(scanner.nextInt());
-            scanner.nextLine();
 
-            while (!board.getGameEnd() && !board.getWeHaveAWinner()) {
-                board.placePlayerSymbol(player);
-            }
-            this.scoreboard();
+        // Game loop.
+        while(true) {
+            this.promptGameDifficulty();
+            this.promptCreateBoard();
 
-            newGameOption();
-        }
-
-    }
-
-    private void newGameOption() {
-        System.out.println("Do you want to play again? (y/n)");
-        boolean validInput = false;
-        String again;
-        while(!validInput) {
-            again = scanner.nextLine();
-            if (again.trim().equalsIgnoreCase("n")) {
-                validInput=true;
-                closeApplication = true;
-            } else if (again.trim().equalsIgnoreCase("y")) {
-                validInput = true;
-                board.setGameEnd(false);
-                board.setWeHaveAWinner(false);
-            } else {
-                System.out.println("You have neither chosen y nor n. Try again.");
+            // Game session loop.
+            while (true) {
+                this.board.printVisibleBoard();
+                this.promptPlayerPlaceSymbol();
+                if (!this.evaluateRound()) {
+                    break;
+                }
             }
         }
     }
@@ -60,11 +41,11 @@ public class GameManager {
 
         while(!validNameInput) {
             String playerName = scanner.nextLine();
+            this.checkQuitCommand(playerName);
             if (playerName.isEmpty()) {
                 System.out.println("Enter a valid name!");
             } else {
-                this.player = new Player();
-                this.player.setName(playerName);
+                this.player = new Player(playerName);
                 validNameInput = true;
             }
         }
@@ -83,88 +64,187 @@ public class GameManager {
 
     /**
      * Asks user to select game difficulty.
-
      */
     private void promptGameDifficulty() {
         boolean isRunning = true;
-        int difficulty;
+        String userInput;
 
         System.out.println("Please enter a game difficulty:");
-        System.out.println("1. Easy");
-        System.out.println("2. Normal");
-        System.out.println("3. Hard");
-        System.out.println("4. Insane");
 
         while(isRunning) {
-            if (scanner.hasNextInt()) {
-                difficulty = scanner.nextInt();
-                scanner.nextLine();
+            System.out.println("1. Easy");
+            System.out.println("2. Normal");
+            System.out.println("3. Hard");
+            System.out.println("4. Insane");
 
-                if (difficulty < 1 || difficulty > 4) {
-                    System.out.println("Enter a valid difficulty level: ");
-                    System.out.println("1. Easy");
-                    System.out.println("2. Normal");
-                    System.out.println("3. Hard");
-                    System.out.println("4. Insane");
+            if (scanner.hasNextLine()) {
+                userInput = scanner.nextLine();
+                this.checkQuitCommand(userInput);
+
+                try {
+                    this.difficulty = Integer.parseInt(userInput);
+                } catch (NumberFormatException e) {
+                    System.out.println("Enter a valid difficulty level:");
                     continue;
                 }
 
-                this.difficulty = difficulty;
+                if (this.difficulty < 1 || this.difficulty > 4) {
+                    System.out.println("Enter a valid difficulty level: ");
+                    continue;
+                }
+
                 isRunning = false;
+            } else {
+                System.out.println("Enter a valid difficulty level: ");
             }
         }
     }
 
+    /**
+     * Asks user how many rows and columns the board should have.
+     * Creates board based on input.
+     */
+    private void promptCreateBoard() {
+        int rows;
+        int columns;
+        String temp;
+
+        // Loop for rows.
+        System.out.println("How many rows do you want for your board?");
+        while(true) {
+            if (scanner.hasNextLine()) {
+                temp = scanner.nextLine();
+                this.checkQuitCommand(temp);
+                try {
+                    rows = Integer.parseInt(temp);
+                } catch (NumberFormatException e) {
+                    System.out.println("Enter a valid number of rows: ");
+                    continue;
+                }
+
+                if (rows < 1) {
+                    System.out.println("Enter a valid number of rows: ");
+                } else {
+                    break;
+                }
+            } else {
+                System.out.println("Enter a valid number of rows: ");
+            }
+        }
+
+        // Loop for columns.
+        System.out.println("How many columns do you want for your board?");
+        while(true) {
+            if (scanner.hasNextLine()) {
+                temp = scanner.nextLine();
+                this.checkQuitCommand(temp);
+
+                try {
+                    columns = Integer.parseInt(temp);
+                } catch (NumberFormatException e) {
+                    System.out.println("Enter a valid number of columns: ");
+                    continue;
+                }
+
+                if (columns < 1) {
+                    System.out.println("Enter a valid number of columns: ");
+                } else {
+                    scanner.nextLine();
+                    break;
+                }
+            }
+        }
+
+        this.board.createBoard(this.difficulty, columns, rows);
+        this.board.placeBombs(this.difficulty);
+        System.out.println("Game has started!");
+    }
 
     /**
-     * Creates the minesweeper game boards.
-     * @param difficulty - Difficulty of game session.
+     * Asks user which minesweeper square to unlock.
      */
-    private void createGame(int difficulty) {
-        board.createBoard();
-        board.placeBombs(difficulty);
-        System.out.println("Game has started!");
+    private void promptPlayerPlaceSymbol() {
+        boolean rowInput = false;
+        boolean columnInput = false;
+        String temp;
+
+        while(true) {
+            while(!rowInput) {
+                this.board.printVisibleBoard();
+                System.out.println("\nChoose a row to place your mark: ");
+                if (scanner.hasNextLine()) {
+                    temp = scanner.nextLine();
+                    this.checkQuitCommand(temp);
+                    try {
+                        this.chosenRow = Integer.parseInt(temp);
+                        rowInput = true;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Enter a valid number of rows: ");
+                    }
+                } else {
+                    System.out.println("Enter a valid row number: ");
+                }
+            }
+
+            while(!columnInput) {
+                this.board.printVisibleBoard();
+                System.out.println("\nChoose a column to place your mark: ");
+                if (scanner.hasNextLine()) {
+                    temp = scanner.nextLine();
+                    this.checkQuitCommand(temp);
+                    try {
+                        this.chosenColumn = Integer.parseInt(temp);
+                        columnInput = true;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Enter a valid number of columns: ");
+                    }
+                } else {
+                    System.out.println("Enter a valid column number: ");
+                }
+            }
+
+            if (this.board.isSquareAvailable(this.chosenRow, this.chosenColumn)) {
+                // Square is available. Break outer loop.
+                break;
+            } else {
+                System.out.println("This spot is taken, chose another one.");
+                rowInput = false;
+                columnInput = false;
+            }
+        }
     }
 
     /**
      * Evaluates a round after each player move.
      * @return - Returns false if this game session is over. True if game proceeds.
      */
-    /*private boolean evaluateRound() {
+    private boolean evaluateRound() {
         // Check if a square is a bomb before placing player symbol.
-        if (this.board.isSquareBomb(this.userInput)) {
+        if (this.board.isSquareBomb(this.chosenRow, this.chosenColumn)) {
             System.out.println("You triggered a bomb. You lost.");
-            this.board.incrementGamesPlayed();
-            System.out.println("You have played: " + this.board.getGamesPlayed() + " games.");
-            System.out.println("You've won: " + this.getWins() + " times.");
+            this.player.incrementGamesPlayed();
+            System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
+            System.out.println("You've won: " + this.player.getWins() + " times.");
             System.out.println("Restarting game.");
-            this.resetGame();
             return false;
         } else {
             // Place player symbol in selected square.
-            this.board.placePlayerSymbol(this.userInput);
+            this.board.placePlayerSymbol(this.chosenRow, this.chosenColumn);
         }
 
         // Check if there is a win condition.
         if (this.board.isWin()) {
             System.out.println("You win!");
-            this.board.incrementWins();
-            this.board.incrementGamesPlayed();
-            System.out.println("You have played: " + this.board.getGamesPlayed() + " games.");
-            System.out.println("You've won: " + this.getWins() + " times.");
+            this.player.incrementWins();
+            this.player.incrementGamesPlayed();
+            System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
+            System.out.println("You've won: " + this.player.getWins() + " times.");
             System.out.println("Restarting game.");
-            this.resetGame();
             return false;
         } else {
+            // Uncomment when finished.
+//            this.board.placeBombAdjacentHints(this.chosenRow, this.chosenColumn);
             return true;
         }
-    }*/
-
-    public void scoreboard() {
-        System.out.println("Number of games played: " + this.player.getGamesPlayed()+"\n"+
-                "Number of games won: " + this.player.getWins()+"\n"+
-                "Number of games lost: " + (this.player.getGamesPlayed()-this.player.getWins()));
-
     }
-
 }
