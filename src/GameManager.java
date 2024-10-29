@@ -122,13 +122,13 @@ public class GameManager {
                             this.chosenRow = Integer.parseInt(temp) - 1;
                             rowInput = true;
                         }else{
-                            System.out.println("Enter a valid number of rows: ");
+                            System.out.println("Enter a valid row number!");
                         }
                     } catch (NumberFormatException e) {
-                        System.out.println("Enter a valid number of rows: ");
+                        System.out.println("Enter a valid row number!");
                     }
                 } else {
-                    System.out.println("Enter a valid row number: ");
+                    System.out.println("Enter a valid row number!");
                 }
             }
 
@@ -142,13 +142,13 @@ public class GameManager {
                             this.chosenColumn = Integer.parseInt(temp) - 1;
                             columnInput = true;
                         }else{
-                            System.out.println("Enter a valid number of columns: ");
+                            System.out.println("Enter a valid column number!");
                         }
                     } catch (NumberFormatException e) {
-                        System.out.println("Enter a valid number of columns: ");
+                        System.out.println("Enter a valid column number!");
                     }
                 } else {
-                    System.out.println("Enter a valid column number: ");
+                    System.out.println("Enter a valid column number!");
                 }
             }
 
@@ -156,7 +156,7 @@ public class GameManager {
                 // Square is available. Break outer loop.
                 break;
             } else {
-                System.out.println("This spot is taken, chose another one.");
+                System.out.println("This spot is taken, choose another one.");
                 rowInput = false;
                 columnInput = false;
             }
