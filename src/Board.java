@@ -84,7 +84,7 @@ public class Board {
         int revealedSafeSpots = 0;
         for(char[] row : boardCollection) {
             for(char symbol : row) {
-                if(symbol == 'X') {
+                if(symbol <= (char) 9) {
                     revealedSafeSpots++;
                 }
             }

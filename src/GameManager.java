@@ -224,12 +224,10 @@ public class GameManager {
         // Check if a square is a bomb before placing player symbol.
         if (this.board.isSquareBomb(this.chosenRow, this.chosenColumn)) {
             System.out.println("You triggered a bomb. You lost.");
-            this.player.incrementGamesPlayed();
-            System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
-            System.out.println("You've won: " + this.player.getWins() + " times.");
-            System.out.println("Restarting game.");
 
+            scoreboard();
             promptNewGame(); // Call promptNewGame to ask about starting a new round or exiting.
+
 
             return false;
         } else {
@@ -241,13 +239,10 @@ public class GameManager {
         if (this.board.isWin(this.difficulty)) {
             System.out.println("You win!");
             this.player.incrementWins();
-            this.player.incrementGamesPlayed();
-            System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
-            System.out.println("You've won: " + this.player.getWins() + " times.");
-            System.out.println("Restarting game.");
+            scoreboard();
             return false;
         } else {
-            this.board.placeBombAdjacentHints(this.chosenRow, this.chosenColumn);
+            this.board.adjacentHints(this.chosenRow, this.chosenColumn);
             return true;
         }
 
@@ -267,5 +262,14 @@ public class GameManager {
                 }
             }
         }
+    }
+    /**
+     * Writes out amount of wins and games played
+     */
+    public void scoreboard(){
+        this.player.incrementGamesPlayed();
+        System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
+        System.out.println("You've won: " + this.player.getWins() + " times.");
+        System.out.println("Restarting game.");
     }
 }
