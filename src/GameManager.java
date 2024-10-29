@@ -7,6 +7,7 @@ public class GameManager {
     private int difficulty;
     private int chosenRow;
     private int chosenColumn;
+    private boolean closeApplication = false;
 
     /**
      * Entry point of the program. Runs the program.
@@ -16,7 +17,7 @@ public class GameManager {
         this.promptCreatePlayer();
 
         // Game loop.
-        while(true) {
+        while(!closeApplication) {
             this.promptGameDifficulty();
             this.promptCreateBoard();
 
@@ -28,6 +29,7 @@ public class GameManager {
                     break;
                 }
             }
+            // method promptNewGame, using class boolean closeApplication for no option.
         }
     }
 
