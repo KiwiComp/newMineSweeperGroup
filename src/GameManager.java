@@ -111,8 +111,8 @@ public class GameManager {
         String temp;
 
         while(true) {
+            this.board.printVisibleBoard();
             while(!rowInput) {
-                this.board.printVisibleBoard();
                 System.out.println("\nChoose a row to place your mark: ");
                 if (scanner.hasNextLine()) {
                     temp = scanner.nextLine();
@@ -133,7 +133,6 @@ public class GameManager {
             }
 
             while(!columnInput) {
-                this.board.printVisibleBoard();
                 System.out.println("\nChoose a column to place your mark: ");
                 if (scanner.hasNextLine()) {
                     temp = scanner.nextLine();
