@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e5a4d3a-feb0-4ad8-b6f9-f2c3965d8f9d" name="Changes" comment="finished adjacent hints so that it works with the newest codes from master">
+    <list default="true" id="0e5a4d3a-feb0-4ad8-b6f9-f2c3965d8f9d" name="Changes" comment="removed bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
     </list>
     <list id="204872c1-aeb6-461d-aad1-c50343058897" name="Changes by angie" comment="" />
@@ -18,6 +19,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -26,12 +32,12 @@
     &quot;assignee&quot;: &quot;dlovans&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/KiwiComp/newMineSweeperGroup.git",
-    "accountId": "68f52cc4-9132-49bb-989e-1e7318f10cdb"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/KiwiComp/newMineSweeperGroup.git&quot;,
+    &quot;accountId&quot;: &quot;68f52cc4-9132-49bb-989e-1e7318f10cdb&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -44,7 +50,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Isaac-Test",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/dlovan/Desktop/skola/java/newMineSweeperGroup",
     "node.js.detected.package.eslint": "true",
@@ -153,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730191193680</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="removed bug">
+      <option name="closed" value="true" />
+      <created>1730196511557</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1730196511557</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +183,7 @@
     <MESSAGE value="Update game control flow" />
     <MESSAGE value="Add logic for checking if user wants to quit" />
     <MESSAGE value="finished adjacent hints so that it works with the newest codes from master" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished adjacent hints so that it works with the newest codes from master" />
+    <MESSAGE value="removed bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed bug" />
   </component>
 </project>

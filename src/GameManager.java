@@ -21,7 +21,7 @@ public class GameManager {
             this.promptGameDifficulty();
             // Game session loop.
             while (true) {
-                this.board.printVisibleBoard();
+                //this.board.printVisibleBoard();
                 this.promptPlayerPlaceSymbol();
                 if (!this.evaluateRound()) {
                     break;
@@ -84,6 +84,7 @@ public class GameManager {
                 try {
                     this.difficulty = Integer.parseInt(userInput);
                     this.board.createBoard(this.difficulty);
+                    this.board.placeBombs(this.difficulty);
                 } catch (NumberFormatException e) {
                     System.out.println("Enter a valid difficulty level:");
                     continue;
@@ -117,8 +118,12 @@ public class GameManager {
                     temp = scanner.nextLine();
                     this.checkQuitCommand(temp);
                     try {
-                        this.chosenRow = Integer.parseInt(temp);
-                        rowInput = true;
+                        if(Integer.parseInt(temp) <= this.difficulty * 5 && Integer.parseInt(temp) > 0) {
+                            this.chosenRow = Integer.parseInt(temp) - 1;
+                            rowInput = true;
+                        }else{
+                            System.out.println("Enter a valid number of rows: ");
+                        }
                     } catch (NumberFormatException e) {
                         System.out.println("Enter a valid number of rows: ");
                     }
@@ -134,8 +139,12 @@ public class GameManager {
                     temp = scanner.nextLine();
                     this.checkQuitCommand(temp);
                     try {
-                        this.chosenColumn = Integer.parseInt(temp);
-                        columnInput = true;
+                        if((Integer.parseInt(temp) <= this.difficulty * 5 && Integer.parseInt(temp) > 0)) {
+                            this.chosenColumn = Integer.parseInt(temp) - 1;
+                            columnInput = true;
+                        }else{
+                            System.out.println("Enter a valid number of columns: ");
+                        }
                     } catch (NumberFormatException e) {
                         System.out.println("Enter a valid number of columns: ");
                     }
@@ -204,12 +213,11 @@ public class GameManager {
             }
         }
     }
-/**
- * Writes out amount of wins and games played
- */
 
-
-public void scoreboard(){
+    /**
+    * Writes out amount of wins and games played
+    */
+    public void scoreboard(){
         this.player.incrementGamesPlayed();
         System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
         System.out.println("You've won: " + this.player.getWins() + " times.");
