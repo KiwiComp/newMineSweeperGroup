@@ -101,35 +101,6 @@ public class GameManager {
         }
     }
 
-
-        // Loop for columns.
-        System.out.println("How many columns do you want for your board?");
-        while(true) {
-            if (scanner.hasNextLine()) {
-                temp = scanner.nextLine();
-                this.checkQuitCommand(temp);
-
-                try {
-                    columns = Integer.parseInt(temp);
-                } catch (NumberFormatException e) {
-                    System.out.println("Enter a valid number of columns: ");
-                    continue;
-                }
-
-                if (columns < 1) {
-                    System.out.println("Enter a valid number of columns: ");
-                } else {
-                    scanner.nextLine();
-                    break;
-                }
-            }
-        }
-
-        this.board.createBoard(this.difficulty, columns, rows);
-        this.board.placeBombs(this.difficulty);
-        System.out.println("Game has started!");
-    }
-
     /**
      * Asks user which minesweeper square to unlock.
      */
@@ -233,16 +204,15 @@ public class GameManager {
             }
         }
     }
+/**
+ * Writes out amount of wins and games played
+ */
 
-    public void scoreboard(){
+
+public void scoreboard(){
         this.player.incrementGamesPlayed();
         System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
         System.out.println("You've won: " + this.player.getWins() + " times.");
         System.out.println("Restarting game.");
     }
 }
-/**
- * Writes out amount of wins and games played
- */
-
-
