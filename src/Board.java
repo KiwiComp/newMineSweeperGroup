@@ -15,7 +15,7 @@ public class Board {
         // Adds question marks to empty board squares.
         for (int row = 0; row < this.numberOfRows; row++) {
             for (int column = 0; column < this.numberOfColumns; column++) {
-                boardCollection[row][column] = '?';
+                boardCollection[row][column] = ' ';
             }
         }
     }
@@ -27,12 +27,13 @@ public class Board {
      * @return - True if available, otherwise false.
      */
     public boolean isSquareAvailable(int chosenRow, int chosenColumn) {
+        boolean isAvailable = false;
         if(boardCollection[chosenRow][chosenColumn] <= 9){
-           return false;
-        }else{
-            System.out.println("Spot is taken pick another");
-            return true;
+           isAvailable = false;
+        }else if (boardCollection[chosenRow][chosenColumn] == ' '){
+            isAvailable = true;
         }
+        return isAvailable;
     }
 
     /**
