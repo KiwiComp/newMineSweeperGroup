@@ -265,14 +265,16 @@ public class GameManager {
             }
         }
     }
+
+    public void scoreboard(){
+        this.player.incrementGamesPlayed();
+        System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
+        System.out.println("You've won: " + this.player.getWins() + " times.");
+        System.out.println("Restarting game.");
+    }
 }
 /**
  * Writes out amount of wins and games played
  */
-public void scoreboard(){
-    this.player.incrementGamesPlayed();
-    System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
-    System.out.println("You've won: " + this.player.getWins() + " times.");
-    System.out.println("Restarting game.");
-}
-}
+
+
