@@ -168,11 +168,11 @@ public class Board {
     }
 
         // printBoard-metoden
-        public void printBoard() {
+        public void printVisibleBoard() {
             System.out.println("Current Board:");
             for (int row = 0; row < rowCollection; row++) {
-                for (int column = 0; colmun < columnCollection; colmun++) {
-                    System.out.println(boardCollection[row][colmun] + " ");
+                for (int column = 0; column < columnCollection; column++) {
+                    System.out.println(boardCollection[row][column] + " ");
                 }
                 System.out.println(); // Ny rad efter varje rad på brädet
             }
