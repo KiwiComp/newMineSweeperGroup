@@ -74,24 +74,21 @@ public class Board {
         }
     }
 
-/*    public boolean isWin() {
-        int totalSafeSpots = rowCollection*columnCollection-difficultyLevel;
+    /**
+     * Checks if user has won a session of minesweeper.
+     * @param difficulty - Game difficulty.
+     * @return - True if win, else false.
+     */
+    public boolean isWin(int difficulty) {
+        int totalSafeSpots = this.numberOfRows*this.numberOfColumns-difficulty * 5;
         int revealedSafeSpots = 0;
         for(char[] row : boardCollection) {
             for(char symbol : row) {
-                if(symbol == (char)adjacentHints(row,row)) {
-                    revealedSafeSpots++;
+                if(symbol == 'X') {
                 }
             }
         }
-        if(revealedSafeSpots==totalSafeSpots) {
-            System.out.println("You have won!");
-            player.incrementGamesPlayed();
-            player.incrementWins();
-            return true;
-        }
-       return false;
-    }*/
+    }
 
     public char adjacentHints(int rowSpot, int columnSpot){
         int bombAmount = 0;
