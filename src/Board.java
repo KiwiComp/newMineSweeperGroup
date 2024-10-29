@@ -122,16 +122,16 @@ public class Board {
     public void printVisibleBoard() {
         System.out.print("      ");
         for(int i = 0; i< numberOfColumns; i++) {
-            System.out.print((i+1) + "     ");
+            System.out.print(String.format("%2d", i+1) + "    ");
         }
         System.out.println();
         for(int row = 0; row < numberOfRows; row++) {
-            System.out.print("   ");
+            System.out.print("    ");
             for(int i = 0; i < numberOfColumns; i++) {
                 System.out.print("+-----");
             }
             System.out.println("+");
-            System.out.print((row+1) +"  ");
+            System.out.print(String.format("%2d", row + 1) + "  ");
             for(int column = 0; column < numberOfColumns; column++) {
                 char cell = boardCollection[row][column];
                 System.out.print("|  "+cell+"  ");
@@ -139,7 +139,7 @@ public class Board {
             }
             System.out.println("|");
         }
-        System.out.print("   ");
+        System.out.print("    ");
         for(int i = 0; i< numberOfColumns; i++) {
             System.out.print("+-----");
         }
