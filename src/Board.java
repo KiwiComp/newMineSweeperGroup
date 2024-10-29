@@ -115,6 +115,7 @@ public class Board {
     }
 
 
+
     /**
      * Prints the minesweeper board to stdout.
      */
@@ -134,6 +135,7 @@ public class Board {
             for(int column = 0; column < numberOfColumns; column++) {
                 char cell = boardCollection[row][column];
                 System.out.print("|  "+cell+"  ");
+
             }
             System.out.println("|");
         }

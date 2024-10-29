@@ -228,6 +228,9 @@ public class GameManager {
             System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
             System.out.println("You've won: " + this.player.getWins() + " times.");
             System.out.println("Restarting game.");
+
+            promptNewGame(); // Call promptNewGame to ask about starting a new round or exiting.
+
             return false;
         } else {
             // Place player symbol in selected square.
@@ -246,6 +249,23 @@ public class GameManager {
         } else {
             this.board.placeBombAdjacentHints(this.chosenRow, this.chosenColumn);
             return true;
+        }
+
+        public void promptNewGame() {
+                System.out.println("Do you want to start a new round? (y/n)");
+                String userInput = Scanner.nextLine().toLowerCase(); // Read player's input
+
+
+                if (userInput.equals("j")) {
+                    createGame(difficulty);
+                } else if (userInput.equals("n")) {
+                    System.out.println("The game is ending. Thank you for playing!");
+                    System.exit(0);
+                } else {
+                    System.out.println("Invalid choice. Enter 'y' to start a new round or 'n' to exit.");
+                    promptNewGame();
+                }
+            }
         }
     }
 }
