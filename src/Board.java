@@ -27,7 +27,12 @@ public class Board {
      * @return - True if available, otherwise false.
      */
     public boolean isSquareAvailable(int chosenRow, int chosenColumn) {
-        return boardCollection[chosenRow][chosenColumn] != 'X';
+        if(boardCollection[chosenRow][chosenColumn] <= 9){
+           return false;
+        }else{
+            System.out.println("Spot is taken pick another");
+            return true;
+        }
     }
 
     /**
