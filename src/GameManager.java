@@ -8,6 +8,7 @@ public class GameManager {
     private int chosenRow;
     private int chosenColumn;
     private boolean closeApplication = false;
+    private boolean gameOver = false;
 
     /**
      * Entry point of the program. Runs the program.
@@ -17,14 +18,14 @@ public class GameManager {
         this.promptCreatePlayer();
 
         // Game loop.
-        while(!closeApplication) {
+        while(!this.closeApplication) {
             this.promptGameDifficulty();
             // Game session loop.
-            while (true) {
+            while (!this.gameOver) {
                 //this.board.printVisibleBoard();
                 this.promptPlayerPlaceSymbol();
                 if (!this.evaluateRound()) {
-                    break;
+                    this.gameOver = true;
                 }
             }
             promptNewGame();
@@ -199,9 +200,9 @@ public class GameManager {
         while(!validInput) {
             String userInput = scanner.nextLine().toLowerCase(); // Read player's input
             if (userInput.equals("y")) {
+                this.gameOver = false;
                 System.out.println("You're starting a new game.\n");
                 validInput = true;
-//                createGame(difficulty);
             } else if (userInput.equals("n")) {
                 System.out.println("The game is ending. Thank you for playing!");
                 validInput = true;
