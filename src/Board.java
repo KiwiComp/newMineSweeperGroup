@@ -85,9 +85,11 @@ public class Board {
         for(char[] row : boardCollection) {
             for(char symbol : row) {
                 if(symbol == 'X') {
+                    revealedSafeSpots++;
                 }
             }
         }
+        return revealedSafeSpots == totalSafeSpots;
     }
 
     public char adjacentHints(int rowSpot, int columnSpot){
