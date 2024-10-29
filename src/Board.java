@@ -1,108 +1,70 @@
-import java.sql.SQLOutput;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Board {
 
-    private int columnCollection;
-    private int rowCollection;
-    private char[][] boardCollection = new char[rowCollection][columnCollection];
-    private char[][] bombCollection = new char[rowCollection][columnCollection];
-    Scanner scanner = new Scanner(System.in);
-    Player player = new Player();
-    private boolean gameEnd = false;
-    private boolean weHaveAWinner = false;
-    private int difficultyLevel;
-    private boolean closeApplication = false;
+    private int numberOfColumns;
+    private int numberOfRows;
+    private char[][] boardCollection = new char[numberOfRows][numberOfColumns];
+    private char[][] bombCollection = new char[numberOfRows][numberOfColumns];
 
+    public void createBoard(int difficulty, int columns, int rows) {
+        this.numberOfRows = 5 * difficulty;
+        this.numberOfColumns = 5 * difficulty;
+        this.boardCollection = new char[rows][columns];
 
-
-    public Board() {
-
-    }
-
-
-    public boolean getGameEnd() {
-        return gameEnd;
-    }
-
-    public boolean getWeHaveAWinner() {
-        return weHaveAWinner;
-    }
-
-    public void setGameEnd(boolean gameEnd) {
-        this.gameEnd = gameEnd;
-    }
-
-    public void setWeHaveAWinner(boolean weHaveAWinner) {
-        this.weHaveAWinner = weHaveAWinner;
-    }
-
-
-    public void createBoard(int difficulty) {
-//        System.out.println("How many rows do you want for your board?");
-//        rowCollection = scanner.nextInt();
-//        scanner.nextLine();
-//        System.out.println("How many columns do you want for your board?");
-//        columnCollection = scanner.nextInt();
-//        scanner.nextLine();
-        rowCollection = 5 * difficulty;
-        columnCollection = 5 * difficulty;
-        boardCollection = new char[rowCollection][columnCollection];
-        for (int row = 0; row < rowCollection; row++) {
-            for (int column = 0; column < columnCollection; column++) {
+        // Adds question marks to empty board squares.
+        for (int row = 0; row < rows; row++) {
+            for (int column = 0; column < columns; column++) {
                 boardCollection[row][column] = '?';
             }
         }
     }
 
+    /**
+     * Checks if a square is available.
+     * @param chosenRow - User selected row.
+     * @param chosenColumn - User selected column.
+     * @return - True if available, otherwise false.
+     */
+    public boolean isSquareAvailable(int chosenRow, int chosenColumn) {
+        return boardCollection[chosenRow][chosenColumn] != 'X';
+    }
 
-    public void placePlayerSymbol() {
-        boolean validInput = false;
-        while (!validInput) {
+    /**
+     * Checks if a square is a bomb.
+     * @param chosenRow - User selected row.
+     * @param chosenColumn - User selected column.
+     * @return - True if is a bomb, otherwise false.
+     */
+    public boolean isSquareBomb(int chosenRow, int chosenColumn) {
+        return this.bombCollection[chosenRow][chosenColumn] == '*';
+    }
 
-            System.out.println("\nChoose a row to place your mark: ");
-            int chosenRow = scanner.nextInt() - 1;
-            scanner.nextLine();
-            System.out.println("Choose a column to place your mark: ");
-            int chosenColumn = scanner.nextInt() - 1;
-            scanner.nextLine();
-
-            if (chosenRow >= 0 && chosenRow < bombCollection.length &&
-                    chosenColumn >= 0 && chosenColumn < bombCollection.length) {
-                if (boardCollection[chosenRow][chosenColumn] == 'X') {
-                    System.out.println("This spot is taken, chose another one.");
-                } else if (bombCollection[chosenRow][chosenColumn] == '*') {
-                    System.out.println("BOOM!");
-                    //add games played code
-                    gameEnd = true;
-                } else if (bombCollection[chosenRow][chosenColumn] == '?') {
-                    System.out.println("Safe spot!");
-                    boardCollection[chosenRow][chosenColumn] = 'X';
-                    this.printVisibleBoard();
-                    weHaveAWinner = isWin();
-                    validInput = true;
-                }
-            }
-        }
+    /**
+     * Places player symbol.
+     * @param chosenRow - User selected row.
+     * @param chosenColumn - User selected column.
+     */
+    public void placePlayerSymbol(int chosenRow, int chosenColumn) {
+        boardCollection[chosenRow][chosenColumn] = 'X';
     }
 
 
 
     public void placeBombs(int difficulty) {
-        bombCollection = new char[rowCollection][columnCollection];
-        for(int row = 0; row <rowCollection; row++) {
-            for(int column = 0; column < columnCollection; column++) {
+        bombCollection = new char[numberOfRows][numberOfColumns];
+        for(int row = 0; row < numberOfRows; row++) {
+            for(int column = 0; column < numberOfColumns; column++) {
                 bombCollection[row][column] = '?';
             }
         }
-        difficultyLevel = 5*difficulty;
+        int difficultyLevel = 5*difficulty;
 
         Random random = new Random();
 
         for(int i = 0; i < difficultyLevel; i++) {
-            int randomRow = random.nextInt(rowCollection);
-            int randomColumn = random.nextInt(columnCollection);
+            int randomRow = random.nextInt(numberOfRows);
+            int randomColumn = random.nextInt(numberOfColumns);
 
             if(bombCollection[randomRow][randomColumn]=='?') {
                 bombCollection[randomRow][randomColumn]='*';
@@ -112,29 +74,24 @@ public class Board {
         }
     }
 
-
-
-
-
-
-    public boolean isWin() {
-        int totalSafeSpots = rowCollection*columnCollection-difficultyLevel;
-        int revealedSafeSpots = 0;
-        for(char[] row : boardCollection) {
-            for(char symbol : row) {
-                if(symbol == 'X') {
-                    revealedSafeSpots++;
-                }
-            }
-        }
-        if(revealedSafeSpots==totalSafeSpots) {
-            System.out.println("You have won!");
-            player.incrementGamesPlayed();
-            player.incrementWins();
-            return true;
-        }
-        return false;
-    }
+//    public boolean isWin() {
+//        int totalSafeSpots = rowCollection*columnCollection-difficultyLevel;
+//        int revealedSafeSpots = 0;
+//        for(char[] row : boardCollection) {
+//            for(char symbol : row) {
+//                if(symbol == 'X') {
+//                    revealedSafeSpots++;
+//                }
+//            }
+//        }
+//        if(revealedSafeSpots==totalSafeSpots) {
+//            System.out.println("You have won!");
+//            player.incrementGamesPlayed();
+//            player.incrementWins();
+//            return true;
+//        }
+//        return false;
+//    }
 
     public int placeBombAdjacentHints(int columnSpot, int rowSpot){
         int bombAmount = 0;
@@ -168,38 +125,30 @@ public class Board {
         return bombAmount;
     }
 
-        // printBoard-metoden
-        /*public void printVisibleBoard() {
-            System.out.println("Current Board:");
-            for (int row = 0; row < rowCollection; row++) {
-                for (int column = 0; column < columnCollection; column++) {
-                    System.out.println(boardCollection[row][column] + " ");
-                }
-                System.out.println(); // Ny rad efter varje rad på brädet
-            }
-        }*/
-
+    /**
+     * Prints the minesweeper board to stdout.
+     */
     public void printVisibleBoard() {
         System.out.print("      ");
-        for(int i = 0; i< columnCollection; i++) {
+        for(int i = 0; i< numberOfColumns; i++) {
             System.out.print((i+1) + "     ");
         }
         System.out.println();
-        for(int row = 0; row < rowCollection; row++) {
+        for(int row = 0; row < numberOfRows; row++) {
             System.out.print("   ");
-            for(int i = 0; i < columnCollection; i++) {
+            for(int i = 0; i < numberOfColumns; i++) {
                 System.out.print("+-----");
             }
             System.out.println("+");
             System.out.print((row+1) +"  ");
-            for(int column = 0; column < columnCollection; column++) {
+            for(int column = 0; column < numberOfColumns; column++) {
                 char cell = boardCollection[row][column];
                 System.out.print("|  "+cell+"  ");
             }
             System.out.println("|");
         }
         System.out.print("   ");
-        for(int i = 0; i< columnCollection; i++) {
+        for(int i = 0; i< numberOfColumns; i++) {
             System.out.print("+-----");
         }
         System.out.println("+");
