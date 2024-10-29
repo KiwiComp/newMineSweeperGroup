@@ -233,7 +233,7 @@ public class GameManager {
         }
 
         // Check if there is a win condition.
-        if (this.board.isWin()) {
+        if (this.board.isWin(this.difficulty)) {
             System.out.println("You win!");
             this.player.incrementWins();
             this.player.incrementGamesPlayed();
@@ -242,8 +242,7 @@ public class GameManager {
             System.out.println("Restarting game.");
             return false;
         } else {
-            // Uncomment when finished.
-//            this.board.placeBombAdjacentHints(this.chosenRow, this.chosenColumn);
+            this.board.placeBombAdjacentHints(this.chosenRow, this.chosenColumn);
             return true;
         }
     }
