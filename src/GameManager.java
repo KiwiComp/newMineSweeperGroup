@@ -151,6 +151,7 @@ public class GameManager {
     private boolean evaluateRound() {
         // Check if a square is a bomb before placing player symbol.
         if (this.board.isSquareBomb(this.chosenRow, this.chosenColumn)) {
+            this.board.printVisibleBoard();
             System.out.println("You triggered a bomb. You lost.");
             scoreboard();
             return false;
@@ -161,6 +162,7 @@ public class GameManager {
 
         // Check if there is a win condition.
         if (this.board.isWin(this.difficulty)) {
+            this.board.printVisibleBoard();
             System.out.println("You win!");
             this.player.incrementWins();
             scoreboard();
