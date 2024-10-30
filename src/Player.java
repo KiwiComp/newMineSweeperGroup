@@ -2,10 +2,7 @@
  * Represents a player.
  */
 public class Player {
-    /**
-     * Player name.
-     */
-    private String name;
+
 
     /**
      * Number of wins.
@@ -25,15 +22,11 @@ public class Player {
     /**
      * Creates a Player instance.
      */
-    public Player(String name) {
-        this.name = name;
+    public Player() {
         this.wins = 0;
         this.gamesPlayed = 0;
     }
 
-    public String getName() {
-        return name;
-    }
 
     public int getWins() {
         return wins;

@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class GameManager {
     final private Board board = new Board();
-    private Player player;
+    final private Player player = new Player();
     final private Scanner scanner = new Scanner(System.in);
     private int difficulty;
     private int chosenRow;
@@ -14,7 +14,7 @@ public class GameManager {
      */
     public void run() {
         System.out.println("\n\n====================== WELCOME TO MINESWEEPER! ==========================\n\n");
-        this.promptCreatePlayer();
+
 
         // Game loop.
         while(!closeApplication) {
@@ -31,25 +31,6 @@ public class GameManager {
         }
     }
 
-    /**
-     * Asks user to enter name. Creates a Player instance.
-     */
-    private void promptCreatePlayer() {
-        System.out.println("Please enter your name:");
-
-        boolean validNameInput = false;
-
-        while(!validNameInput) {
-            String playerName = scanner.nextLine();
-            this.checkQuitCommand(playerName);
-            if (playerName.isEmpty()) {
-                System.out.println("Enter a valid name!");
-            } else {
-                this.player = new Player(playerName);
-                validNameInput = true;
-            }
-        }
-    }
 
     /**
      * Quits program if user enters stream argument.
