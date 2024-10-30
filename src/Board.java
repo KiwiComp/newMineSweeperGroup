@@ -19,7 +19,7 @@ public class Board {
         this.numberOfColumns = 5 * difficulty;
         this.boardCollection = new char[this.numberOfRows][this.numberOfColumns];
 
-        // Adds question marks to empty board squares.
+        // Adds 'space' to empty board squares.
         for (int row = 0; row < this.numberOfRows; row++) {
             for (int column = 0; column < this.numberOfColumns; column++) {
                 boardCollection[row][column] = ' ';
@@ -35,8 +35,10 @@ public class Board {
      */
     public boolean isSquareAvailable(int chosenRow, int chosenColumn) {
         boolean isAvailable = false;
+        // checks if the position contains a number 9 or smaller, spot is taken = set boolean to false.
         if(boardCollection[chosenRow][chosenColumn] <= 9){
            isAvailable = false;
+       // checks if the position contains 'space', spot is available = set boolean to true;
         }else if (boardCollection[chosenRow][chosenColumn] == ' '){
             isAvailable = true;
         }
@@ -71,6 +73,7 @@ public class Board {
 
     public void placeBombs(int difficulty) {
         bombCollection = new char[numberOfRows][numberOfColumns];
+        // Fills hidden bomb board with question marks.
         for(int row = 0; row < numberOfRows; row++) {
             for(int column = 0; column < numberOfColumns; column++) {
                 bombCollection[row][column] = '?';
@@ -80,10 +83,12 @@ public class Board {
 
         Random random = new Random();
 
+        // randomises where to place bombs, bombs are symbolised by *.
         for(int i = 0; i < difficultyLevel; i++) {
             int randomRow = random.nextInt(numberOfRows);
             int randomColumn = random.nextInt(numberOfColumns);
 
+            // Checks if random position is a question mark, if not, go back one iteration and try again.
             if(bombCollection[randomRow][randomColumn]=='?') {
                 bombCollection[randomRow][randomColumn]='*';
             } else {
@@ -101,14 +106,16 @@ public class Board {
         int totalSafeSpots = this.numberOfRows * this.numberOfColumns - difficulty * 5;
         int revealedSafeSpots = 0;
 
+        // Check position symbols.
         for (int row = 0; row < numberOfRows; row++) {
             for (int col = 0; col < numberOfColumns; col++) {
-                // Check if the cell is revealed and not a bomb
+                // Check if the cell is revealed and not a bomb, if revealed add 1 to revealedSafeSpots.
                 if (boardCollection[row][col] != ' ' && bombCollection[row][col] != '*') {
                     revealedSafeSpots++;
                 }
             }
         }
+        // As soon as revealedSafeSpots equals totalSafeSpots, return true.
         return revealedSafeSpots == totalSafeSpots;
     }
 
@@ -155,6 +162,7 @@ public class Board {
     public void printVisibleBoard() {
         System.out.print("      ");
         for(int i = 0; i< numberOfColumns; i++) {
+            // Format column positioning numbers so they take up the same space (2 digits).
             System.out.print(String.format("%2d", i+1) + "    ");
         }
         System.out.println();
@@ -164,6 +172,7 @@ public class Board {
                 System.out.print("+-----");
             }
             System.out.println("+");
+            // Format row positioning numbers so they take up the same space (2 digits).
             System.out.print(String.format("%2d", row + 1) + "  ");
             for(int column = 0; column < numberOfColumns; column++) {
                 char cell = boardCollection[row][column];
