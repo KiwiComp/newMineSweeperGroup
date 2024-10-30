@@ -2,8 +2,6 @@
  * Represents a player.
  */
 public class Player {
-
-
     /**
      * Number of wins.
      */
@@ -13,11 +11,6 @@ public class Player {
      * Number of games played.
      */
     private int gamesPlayed;
-
-    /**
-     * Player square placement symbol.
-     */
-    private String playerSymbol = "X";
 
     /**
      * Creates a Player instance.
@@ -34,10 +27,6 @@ public class Player {
 
     public int getGamesPlayed() {
         return gamesPlayed;
-    }
-
-    public String getPlayerSymbol() {
-        return playerSymbol;
     }
 
     public void incrementWins() {
