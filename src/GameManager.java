@@ -173,7 +173,7 @@ public class GameManager {
 
     }
 
-    public void promptNewGame() {
+    private void promptNewGame() {
         System.out.println("Do you want to start a new round? (y/n)");
         boolean validInput = false;
 
@@ -197,7 +197,7 @@ public class GameManager {
     /**
     * Writes out amount of wins and games played
     */
-    public void scoreboard(){
+    private void scoreboard(){
         this.player.incrementGamesPlayed();
         System.out.println("You have played: " + this.player.getGamesPlayed() + " games.");
         System.out.println("You've won: " + this.player.getWins() + " times.");
