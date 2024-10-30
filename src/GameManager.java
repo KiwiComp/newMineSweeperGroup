@@ -174,25 +174,33 @@ public class GameManager {
     }
 
     private void promptNewGame() {
-        System.out.println("Do you want to start a new round? (y/n)");
+        System.out.println("Do you want to start a new round or exit? (Enter 'r' to restart, 'n' for a new game, or 'x' to exit)");
         boolean validInput = false;
 
-        while(!validInput) {
+        while (!validInput) {
             String userInput = scanner.nextLine().toLowerCase(); // Read player's input
-            if (userInput.equals("y")) {
+
+            if (userInput.equals("r")) {
+                System.out.println("You're restarting the current game.\n");
+                // Reset necessary game states here if needed
+                validInput = true;
+                // You can call any methods to reset the current game state
+                this.board.resetBoard();
+            } else if (userInput.equals("n")) {
                 System.out.println("You're starting a new game.\n");
                 validInput = true;
-//                createGame(difficulty);
-            } else if (userInput.equals("n")) {
+                this.promptGameDifficulty(); // Ask for game difficulty again
+            } else if (userInput.equals("x")) {
                 System.out.println("The game is ending. Thank you for playing!");
                 validInput = true;
-                closeApplication = true;
-                System.exit(0);
+                closeApplication = true; // Set the flag to close the application
+                System.exit(0); // Exit the application
             } else {
-                System.out.println("Invalid choice. Enter 'y' to start a new round or 'n' to exit.");
+                System.out.println("Invalid choice. Enter 'r' to restart, 'n' to start a new game, or 'x' to exit.");
             }
         }
     }
+
 
     /**
     * Writes out amount of wins and games played
