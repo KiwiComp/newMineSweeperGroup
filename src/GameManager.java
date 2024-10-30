@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+/**
+ * Represents Minesweeper game. Handles control flow and user interactions.
+ */
 public class GameManager {
     final private Board board = new Board();
     final private Player player = new Player();
@@ -8,6 +11,7 @@ public class GameManager {
     private int chosenRow;
     private int chosenColumn;
     private boolean closeApplication = false;
+    private boolean gameOver = false;
 
     /**
      * Entry point of the program. Runs the program.
@@ -15,19 +19,18 @@ public class GameManager {
     public void run() {
         System.out.println("\n\n====================== WELCOME TO MINESWEEPER! ==========================\n\n");
 
-
         // Game loop.
         while(!closeApplication) {
             this.promptGameDifficulty();
             // Game session loop.
-            while (true) {
+            while (!gameOver) {
                 //this.board.printVisibleBoard();
                 this.promptPlayerPlaceSymbol();
                 if (!this.evaluateRound()) {
-                    break;
+                    this.gameOver = true;
                 }
             }
-            promptNewGame();
+            this.promptNewGame();
         }
     }
 
@@ -91,6 +94,7 @@ public class GameManager {
         boolean columnInput = false;
         String temp;
 
+        // Ask row number.
         while(true) {
             this.board.printVisibleBoard();
             while(!rowInput) {
@@ -103,16 +107,17 @@ public class GameManager {
                             this.chosenRow = Integer.parseInt(temp) - 1;
                             rowInput = true;
                         }else{
-                            System.out.println("Enter a valid number of rows: ");
+                            System.out.println("Enter a valid row number: ");
                         }
                     } catch (NumberFormatException e) {
-                        System.out.println("Enter a valid number of rows: ");
+                        System.out.println("Enter a valid row number: ");
                     }
                 } else {
                     System.out.println("Enter a valid row number: ");
                 }
             }
 
+            // Ask column number.
             while(!columnInput) {
                 System.out.println("\nChoose a column to place your mark: ");
                 if (scanner.hasNextLine()) {
@@ -123,10 +128,10 @@ public class GameManager {
                             this.chosenColumn = Integer.parseInt(temp) - 1;
                             columnInput = true;
                         }else{
-                            System.out.println("Enter a valid number of columns: ");
+                            System.out.println("Enter a valid column number: ");
                         }
                     } catch (NumberFormatException e) {
-                        System.out.println("Enter a valid number of columns: ");
+                        System.out.println("Enter a valid column number: ");
                     }
                 } else {
                     System.out.println("Enter a valid column number: ");
@@ -174,6 +179,9 @@ public class GameManager {
 
     }
 
+    /**
+     * Ask user to play another round after a game session.
+     */
     private void promptNewGame() {
         System.out.println("Do you want to start a new round? (y/n)");
         boolean validInput = false;
@@ -183,7 +191,7 @@ public class GameManager {
             if (userInput.equals("y")) {
                 System.out.println("You're starting a new game.\n");
                 validInput = true;
-//                createGame(difficulty);
+                this.gameOver = false;
             } else if (userInput.equals("n")) {
                 System.out.println("The game is ending. Thank you for playing!");
                 validInput = true;
@@ -196,7 +204,7 @@ public class GameManager {
     }
 
     /**
-    * Writes out amount of wins and games played
+    * Writes out amount of wins and games played.
     */
     private void scoreboard(){
         this.player.incrementGamesPlayed();
