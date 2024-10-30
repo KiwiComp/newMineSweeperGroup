@@ -8,10 +8,12 @@ public class Board {
     private char[][] bombCollection = new char[numberOfRows][numberOfColumns];
 
 
+
     /**
      * Method to create the current playing board based on user's chosen difficulty level.
      * @param difficulty - the user's chosen difficulty level.
      */
+
     public void createBoard(int difficulty) {
         this.numberOfRows = 5 * difficulty;
         this.numberOfColumns = 5 * difficulty;
@@ -61,10 +63,12 @@ public class Board {
     }
 
 
+
     /**
      * Set bombs on board based on user's chosen difficulty level.
      * @param difficulty - user selected difficulty level.
      */
+
     public void placeBombs(int difficulty) {
         bombCollection = new char[numberOfRows][numberOfColumns];
         for(int row = 0; row < numberOfRows; row++) {
@@ -94,11 +98,13 @@ public class Board {
      * @return - True if win, else false.
      */
     public boolean isWin(int difficulty) {
-        int totalSafeSpots = this.numberOfRows*this.numberOfColumns-difficulty * 5;
+        int totalSafeSpots = this.numberOfRows * this.numberOfColumns - difficulty * 5;
         int revealedSafeSpots = 0;
-        for(char[] row : boardCollection) {
-            for(char symbol : row) {
-                if(symbol <= (char) 9) {
+
+        for (int row = 0; row < numberOfRows; row++) {
+            for (int col = 0; col < numberOfColumns; col++) {
+                // Check if the cell is revealed and not a bomb
+                if (boardCollection[row][col] != ' ' && bombCollection[row][col] != '*') {
                     revealedSafeSpots++;
                 }
             }
@@ -107,12 +113,14 @@ public class Board {
     }
 
 
+
     /**
      * Method to print number of bombs adjacent to chosen square.
      * @param rowSpot - user's chosen row position.
      * @param columnSpot - user's chosen column position.
      * @return - the number of bombs adjacent to chosen position.
      */
+
     public char adjacentHints(int rowSpot, int columnSpot){
         int bombAmount = 0;
         for (int i = -1; i < 2; i++) {
