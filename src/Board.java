@@ -82,20 +82,35 @@ public class Board {
 
     /**
      * Checks if user has won a session of minesweeper.
-     * @param difficulty - Game difficulty.
      * @return - True if win, else false.
      */
-    public boolean isWin(int difficulty) {
-        int totalSafeSpots = this.numberOfRows*this.numberOfColumns-difficulty * 5;
-        int revealedSafeSpots = 0;
-        for(char[] row : boardCollection) {
-            for(char symbol : row) {
-                if(symbol <= (char) 9) {
-                    revealedSafeSpots++;
+    public boolean isWin() {
+        int totalSpots = this.numberOfRows * this.numberOfColumns;
+        int occupiedSpots = 0;
+        int totalBombs = 0;
+        int remainingSpots;
+
+        // Checks how many spots are occupied by player.
+        for (int i = 0; i < boardCollection.length; i++) {
+            for (int j = 0; j < boardCollection[i].length; j++) {
+                if (Character.isDigit(boardCollection[i][j])) {
+                    occupiedSpots++;
                 }
             }
         }
-        return revealedSafeSpots == totalSafeSpots;
+
+        // Calculates number of bombs in game session.
+        for (int i = 0; i < bombCollection.length; i++) {
+            for (int j = 0; j < bombCollection[i].length; j++) {
+                if (bombCollection[i][j] == '*') {
+                    totalBombs++;
+                }
+            }
+        }
+
+        // Total spots, negate total bomb spots.
+        return totalSpots - totalBombs == occupiedSpots;
+
     }
 
     public char adjacentHints(int rowSpot, int columnSpot){
