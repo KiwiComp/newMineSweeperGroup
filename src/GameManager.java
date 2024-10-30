@@ -180,7 +180,7 @@ public class GameManager {
         }
 
         // Check if there is a win condition.
-        if (this.board.isWin(this.difficulty)) {
+        if (this.board.isWin()) {
             System.out.println("You win!");
             this.player.incrementWins();
             this.scoreboard();
