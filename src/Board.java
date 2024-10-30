@@ -123,7 +123,10 @@ public class Board {
 
     public char adjacentHints(int rowSpot, int columnSpot){
         int bombAmount = 0;
+        //This for loops checks from the spot left of the chosen spot to the one on the right
         for (int i = -1; i < 2; i++) {
+            //This checks the row on top of the chosen spot and so forth
+            //It also only checks the row/column if the spot is within the set board size
             if (rowSpot - 1 >= 0 && columnSpot + i >= 0 && columnSpot + i < numberOfColumns) {
                 if(isSquareBomb(rowSpot - 1, columnSpot + i)){
                     bombAmount++;
@@ -140,6 +143,7 @@ public class Board {
                 }
             }
         }
+        //It then makes the int into a char
         return (char) (bombAmount + '0');
     }
 
