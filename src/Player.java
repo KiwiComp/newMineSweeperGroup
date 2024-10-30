@@ -21,18 +21,32 @@ public class Player {
     }
 
 
+    /**
+     * Getter for wins.
+     * @return wins.
+     */
     public int getWins() {
         return wins;
     }
 
+    /**
+     * Getter for gamesPlayed.
+     * @return gamesPlayed.
+     */
     public int getGamesPlayed() {
         return gamesPlayed;
     }
 
+    /**
+     * Method that increases wins by 1 each time it's called upon.
+     */
     public void incrementWins() {
         this.wins++;
     }
 
+    /**
+     * Method that increases gamesPlayed by 1 each time it's called upon.
+     */
     public void incrementGamesPlayed() {
         this.gamesPlayed++;
     }
